@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1400367643 source:d:\fft\project3\fftproject\complex.cpp
+	"Complex.h"
+
+1400360282 d:\fft\project3\fftproject\complex.h
+
+1400367655 source:d:\fft\project3\fftproject\fftransformer.cpp
+	"FFTransformer.h"
+
+1400363313 d:\fft\project3\fftproject\fftransformer.h
+	<cmath>
+	"Complex.h"
+
+1400367716 source:d:\fft\project3\fftproject\main.cpp
+	<iostream>
+	<omp.h>
+	<cstdlib>
+	<Complex.h>
+	<FFTransformer.h>
+
