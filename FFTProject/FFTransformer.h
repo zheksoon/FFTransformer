@@ -13,6 +13,7 @@ class FFTransformer
         int length;
         int direction;
         Complex<FLOAT> *twiddles;
+        uint *shuffle_ind;
 
         bool isPowerOfTwo(uint n);
         int getPowerOfTwo(uint n);

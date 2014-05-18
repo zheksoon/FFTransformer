@@ -7,8 +7,6 @@ class Complex
     public:
         T re;
         T im;
-        Complex();
-        Complex(T re, T im);
 };
 
 #endif // COMPLEX_H

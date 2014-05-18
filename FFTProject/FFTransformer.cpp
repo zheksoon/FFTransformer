@@ -29,27 +29,26 @@ uint FFTransformer<FLOAT>::bitReverseInt32(uint v)
 template <class FLOAT>
 void FFTransformer<FLOAT>::arrayShuffle(Complex<FLOAT>* data, int length)
 {
-    int bit_cnt = 32 - getPowerOfTwo(length);
 	for (int i = 0; i < length; i++)
 	{
-		uint rev_i = bitReverseInt32(i) >> bit_cnt;
-		if (rev_i > i)
-		{
-			Complex<FLOAT> t = data[i];
-			data[i] = data[rev_i];
-			data[rev_i] = t;
-		}
+		int rev_ind = shuffle_ind[i];
+		if (rev_ind > i)
+        {
+            Complex<FLOAT> t = data[i];
+            data[i] = data[rev_ind];
+            data[rev_ind] = t;
+        }
 	}
 }
 
 template <class FLOAT>
-FFTransformer<FLOAT>::FFTransformer()
+FFTransformer<FLOAT>::FFTransformer() : twiddles(0), shuffle_ind(0)
 {
     //do nothing
 }
 
 template <class FLOAT>
-FFTransformer<FLOAT>::FFTransformer(int fftLength, int direction)
+FFTransformer<FLOAT>::FFTransformer(int fftLength, int direction) : twiddles(0)
 {
     FFTInit(fftLength, direction);
 }
@@ -57,7 +56,14 @@ FFTransformer<FLOAT>::FFTransformer(int fftLength, int direction)
 template <class FLOAT>
 FFTransformer<FLOAT>::~FFTransformer()
 {
-
+    if (this->twiddles != 0)
+    {
+        delete[] twiddles;
+    }
+    if (this->shuffle_ind != 0)
+    {
+        delete[] shuffle_ind;
+    }
 }
 
 template <class FLOAT>
@@ -67,6 +73,22 @@ bool FFTransformer<FLOAT>::FFTInit(int fftLength, int direction)
     {
         this->length = fftLength;
         this->direction = direction > 0 ? 1 : 0;
+        this->twiddles    = new Complex<FLOAT>[fftLength];
+        this->shuffle_ind = new uint[fftLength];
+        for (int twSteep = 1; twSteep < fftLength; twSteep *= 2)
+        {
+            for (int i = 0; i < twSteep; i++)
+            {
+                FLOAT twAngle = -M_PI * direction * i / twSteep;
+                twiddles[twSteep + i - 1].re = cos(twAngle);
+                twiddles[twSteep + i - 1].im = sin(twAngle);
+            }
+        }
+        int bit_cnt = 32 - getPowerOfTwo(length);
+        for (int i = 0; i < length; i++)
+        {
+            shuffle_ind[i] = bitReverseInt32(i) >> bit_cnt;
+        }
         return true;
     }
     else
@@ -86,9 +108,8 @@ bool FFTransformer<FLOAT>::FFTransform(Complex<FLOAT>* data)
 		steep *= 2;
 		for (int twiddle = 0; twiddle < twiddle_number; twiddle++)
 		{
-			FLOAT twiddle_angle = -M_PI * direction * twiddle / twiddle_number;
-			FLOAT c = cos(twiddle_angle);
-			FLOAT s = sin(twiddle_angle);
+			FLOAT c = twiddles[twiddle_number + twiddle - 1].re;
+			FLOAT s = twiddles[twiddle_number + twiddle - 1].im;
 			for (int butterfly = twiddle; butterfly < length; butterfly += steep)
 			{
 				Complex<FLOAT> &a = data[butterfly];
