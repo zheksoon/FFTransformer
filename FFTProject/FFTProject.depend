@@ -4,22 +4,77 @@
 
 1400428174 d:\fft\project3\fftproject\complex.h
 
-1400430900 source:d:\fft\project3\fftproject\fftransformer.cpp
+1400436872 source:d:\fft\project3\fftproject\fftransformer.cpp
 	"FFTransformer.h"
 
 1400425654 d:\fft\project3\fftproject\fftransformer.h
 	<cmath>
 	"Complex.h"
 
-1400413625 source:d:\fft\project3\fftproject\main.cpp
+1400439743 source:d:\fft\project3\fftproject\main.cpp
 	<iostream>
 	<omp.h>
 	<cstdlib>
 	<Complex.h>
 	<FFTransformer.h>
+	<FFTransformerVec.h>
 	"fftw/fftw3.h"
 
 1394922460 d:\fft\project3\fftproject\fftw\fftw3.h
 	<stdio.h>
 	<stddef.h>
+
+1400440959 source:d:\fft\project3\fftproject\fftransformervec.cpp
+	"FFTransformerVec.h"
+
+1400437791 d:\fft\project3\fftproject\fftransformervec.h
+	<cmath>
+	"vectorclass.h"
+	"Complex.h"
+
+1398179604 d:\fft\project3\fftproject\vector\vectorclass.h
+	"instrset.h"
+	"vectori128.h"
+	"vectorf128.h"
+	"vectori256.h"
+	"vectori256e.h"
+	"vectorf256.h"
+	"vectorf256e.h"
+
+1398179628 d:\fft\project3\fftproject\vector\instrset.h
+	<x86intrin.h>
+	<immintrin.h>
+	<immintrin.h>
+	<nmmintrin.h>
+	<smmintrin.h>
+	<tmmintrin.h>
+	<pmmintrin.h>
+	<emmintrin.h>
+	<xmmintrin.h>
+	<x86intrin.h>
+	<ammintrin.h>
+	<ammintrin.h>
+	<fmaintrin.h>
+	<fma4intrin.h>
+	<stdint.h>
+	<stdlib.h>
+	<intrin.h>
+
+1398179604 d:\fft\project3\fftproject\vector\vectori128.h
+	"instrset.h"
+
+1398179604 d:\fft\project3\fftproject\vector\vectorf128.h
+	"vectori128.h"
+
+1398179604 d:\fft\project3\fftproject\vector\vectori256.h
+	"vectori128.h"
+
+1398179604 d:\fft\project3\fftproject\vector\vectori256e.h
+	"vectori128.h"
+
+1398179604 d:\fft\project3\fftproject\vector\vectorf256.h
+	"vectorf128.h"
+
+1398179604 d:\fft\project3\fftproject\vector\vectorf256e.h
+	"vectorf128.h"
 

@@ -1,19 +1,19 @@
-#include "FFTransformer.h"
+#include "FFTransformerVec.h"
 
 template <class FLOAT>
-bool FFTransformer<FLOAT>::isPowerOfTwo(uint n)
+bool FFTransformerVec<FLOAT>::isPowerOfTwo(uint n)
 {
     return ((n - 1) & n) == 0;
 }
 
 template <class FLOAT>
-int FFTransformer<FLOAT>::getPowerOfTwo(uint n)
+int FFTransformerVec<FLOAT>::getPowerOfTwo(uint n)
 {
     return 31 - __builtin_clz(n);
 }
 
 template <class FLOAT>
-uint FFTransformer<FLOAT>::bitReverseInt32(uint v)
+uint FFTransformerVec<FLOAT>::bitReverseInt32(uint v)
 {
     static const unsigned char rev_byte[256] = {0, 128, 64, 192, 32, 160, 96, 224, 16, 144, 80, 208, 48, 176, 112, 240, 8, 136, 72, 200, 40, 168, 104, 232, 24, 152, 88, 216, 56, 184, 120, 248, 4, 132, 68, 196, 36, 164, 100, 228, 20, 148, 84, 212, 52, 180, 116, 244, 12, 140, 76, 204, 44, 172, 108, 236, 28, 156, 92, 220, 60, 188, 124, 252, 2, 130, 66, 194, 34, 162, 98, 226, 18, 146, 82, 210, 50, 178, 114, 242, 10, 138, 74, 202, 42, 170, 106, 234, 26, 154, 90, 218, 58, 186, 122, 250, 6, 134, 70, 198, 38, 166, 102, 230, 22, 150, 86, 214, 54, 182, 118, 246, 14, 142, 78, 206, 46, 174, 110, 238, 30, 158, 94, 222, 62, 190, 126, 254, 1, 129, 65, 193, 33, 161, 97, 225, 17, 145, 81, 209, 49, 177, 113, 241, 9, 137, 73, 201, 41, 169, 105, 233, 25, 153, 89, 217, 57, 185, 121, 249, 5, 133, 69, 197, 37, 165, 101, 229, 21, 149, 85, 213, 53, 181, 117, 245, 13, 141, 77, 205, 45, 173, 109, 237, 29, 157, 93, 221, 61, 189, 125, 253, 3, 131, 67, 195, 35, 163, 99, 227, 19, 147, 83, 211, 51, 179, 115, 243, 11, 139, 75, 203, 43, 171, 107, 235, 27, 155, 91, 219, 59, 187, 123, 251, 7, 135, 71, 199, 39, 167, 103, 231, 23, 151, 87, 215, 55, 183, 119, 247, 15, 143, 79, 207, 47, 175, 111, 239, 31, 159, 95, 223, 63, 191, 127, 255, };
 	for (int i = 0; i < 4; i++)
@@ -27,7 +27,7 @@ uint FFTransformer<FLOAT>::bitReverseInt32(uint v)
 }
 
 template <class FLOAT>
-void FFTransformer<FLOAT>::arrayShuffle(Complex<FLOAT>* data, int length)
+void FFTransformerVec<FLOAT>::arrayShuffle(Complex<FLOAT>* data, int length)
 {
 	for (int i = 0; i < length; i++)
 	{
@@ -42,19 +42,19 @@ void FFTransformer<FLOAT>::arrayShuffle(Complex<FLOAT>* data, int length)
 }
 
 template <class FLOAT>
-FFTransformer<FLOAT>::FFTransformer() : twiddles(0), shuffle_ind(0)
+FFTransformerVec<FLOAT>::FFTransformerVec() : twiddles(0), shuffle_ind(0)
 {
     //do nothing
 }
 
 template <class FLOAT>
-FFTransformer<FLOAT>::FFTransformer(int fftLength, int direction) : twiddles(0)
+FFTransformerVec<FLOAT>::FFTransformerVec(int fftLength, int direction) : twiddles(0)
 {
     FFTInit(fftLength, direction);
 }
 
 template <class FLOAT>
-FFTransformer<FLOAT>::~FFTransformer()
+FFTransformerVec<FLOAT>::~FFTransformerVec()
 {
     if (this->twiddles != 0)
     {
@@ -67,7 +67,7 @@ FFTransformer<FLOAT>::~FFTransformer()
 }
 
 template <class FLOAT>
-bool FFTransformer<FLOAT>::FFTInit(int fftLength, int direction)
+bool FFTransformerVec<FLOAT>::FFTInit(int fftLength, int direction)
 {
     if (fftLength > 0 && isPowerOfTwo(fftLength))
     {
@@ -96,7 +96,7 @@ bool FFTransformer<FLOAT>::FFTInit(int fftLength, int direction)
 }
 
 template <class FLOAT>
-bool FFTransformer<FLOAT>::FFTransform(Complex<FLOAT>* data)
+bool FFTransformerVec<FLOAT>::FFTransform(Complex<FLOAT>* data)
 {
     if (length <= 0 || !isPowerOfTwo(length)) return false;
     if (length == 1) return true;
@@ -111,6 +111,24 @@ bool FFTransformer<FLOAT>::FFTransform(Complex<FLOAT>* data)
         Complex<FLOAT> &c = data[butterfly + 2];
         Complex<FLOAT> &d = data[butterfly + 3];
 
+        Vec4f ab, cd;
+        ab.load_a((float*)&a);
+        cd.load_a((float*)&c);
+        Vec4f sign_1 = reinterpret_f(Vec4i(0, 0, 1<<31, 1<<31));
+        Vec4f sign_2 = reinterpret_f(Vec4i(0, 0, 0, 1<<31));
+
+        Vec4f ab_shuf = permute4f<2,3,0,1>(ab);
+        ab = (ab ^ sign_1) + ab_shuf;
+
+        Vec4f cd_shuf = permute4f<2,3,0,1>(cd) ;
+        cd = (cd ^ sign_1) + cd_shuf;
+
+        Vec4f ab_fin = ab + (permute4f<0,1,3,2>(cd) ^ sign_2);
+        Vec4f cd_fin = ab - (permute4f<0,1,3,2>(cd) ^ sign_2);
+
+        ab_fin.store_a((float*)&a);
+        cd_fin.store_a((float*)&c);
+/*
         FLOAT ua = a.re + b.re;
         FLOAT va = a.im + b.im;
         FLOAT ub = a.re - b.re;
@@ -123,13 +141,14 @@ bool FFTransformer<FLOAT>::FFTransform(Complex<FLOAT>* data)
 
         a.re = ua + uc;
         a.im = va + vc;
-        c.re = ua - uc;
-        c.im = va - vc;
-
         b.re = ub + vd;
         b.im = vb - ud;
+
+        c.re = ua - uc;
+        c.im = va - vc;
         d.re = ub - vd;
         d.im = vb + ud;
+        */
     }
     if (length == 2) return true;
 
@@ -166,6 +185,6 @@ bool FFTransformer<FLOAT>::FFTransform(Complex<FLOAT>* data)
 	return true;
 }
 
-template class FFTransformer<float>;
-template class FFTransformer<double>;
-template class FFTransformer<long double>;
+template class FFTransformerVec<float>;
+//template class FFTransformerVec<double>;
+//template class FFTransformerVec<long double>;

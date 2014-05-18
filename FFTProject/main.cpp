@@ -4,6 +4,7 @@
 
 #include <Complex.h>
 #include <FFTransformer.h>
+#include <FFTransformerVec.h>
 #include "fftw/fftw3.h"
 
 using namespace std;
@@ -47,7 +48,7 @@ void compareFFTW3()
         data[i].re = 100*(float)rand() / RAND_MAX;
         data[i].im = 100*(float)rand() / RAND_MAX;
     }
-    FFTransformer<float> FFT(N, 1);
+    FFTransformerVec<float> FFT(N, 1);
     FFT.FFTransform(data);
 
     float acc = 0;
@@ -70,7 +71,7 @@ template <class T>
 void testFFT()
 {
     cout << "Preparing data..." << endl;
-    FFTransformer<T> FFT(FFT_SIZE, 1);
+    FFTransformerVec<T> FFT(FFT_SIZE, 1);
     Complex<T> *data = prepareData<T>(DATA_SIZE);
     cout << "Starting testing..." << endl;
     double tStart = omp_get_wtime();
@@ -104,14 +105,16 @@ int main()
     compareFFTW3();
     cout << "-----------------" << endl;
     //testSin();
+
     cout << "Testing float..." << endl;
     testFFT<float>();
+    /*
     cout << "-----------------" << endl;
     cout << "Testing double..." << endl;
     testFFT<double>();
     cout << "-----------------" << endl;
     cout << "Testing long double..." << endl;
     testFFT<long double>();
-
+    */
     return 0;
 }
