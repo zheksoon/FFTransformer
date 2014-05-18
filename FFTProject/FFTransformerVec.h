@@ -14,7 +14,9 @@ class FFTransformerVec
     private:
         int length;
         int direction;
+        Complex<FLOAT> *twiddles_unalign;
         Complex<FLOAT> *twiddles;
+        uint *shuffle_ind_unalign;
         uint *shuffle_ind;
 
         bool isPowerOfTwo(uint n);

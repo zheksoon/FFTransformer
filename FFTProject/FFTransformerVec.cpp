@@ -56,13 +56,13 @@ FFTransformerVec<FLOAT>::FFTransformerVec(int fftLength, int direction) : twiddl
 template <class FLOAT>
 FFTransformerVec<FLOAT>::~FFTransformerVec()
 {
-    if (this->twiddles != 0)
+    if (this->twiddles_unalign != 0)
     {
-        delete[] twiddles;
+        delete[] twiddles_unalign;
     }
-    if (this->shuffle_ind != 0)
+    if (this->shuffle_ind_unalign != 0)
     {
-        delete[] shuffle_ind;
+        delete[] shuffle_ind_unalign;
     }
 }
 
@@ -73,15 +73,17 @@ bool FFTransformerVec<FLOAT>::FFTInit(int fftLength, int direction)
     {
         this->length = fftLength;
         this->direction = direction > 0 ? 1 : 0;
-        this->twiddles    = new Complex<FLOAT>[fftLength];
-        this->shuffle_ind = new uint[fftLength];
-        for (int twSteep = 1; twSteep < fftLength; twSteep *= 2)
+        this->twiddles_unalign    = new Complex<FLOAT>[fftLength + 16 / sizeof(Complex<FLOAT>)];
+        this->shuffle_ind_unalign = new uint[fftLength + 16 / sizeof(uint)];
+        this->twiddles = (Complex<FLOAT>*)((int)twiddles_unalign & (~15));
+        this->shuffle_ind = (uint*)((int)shuffle_ind_unalign & (~15));
+        for (int twSteep = 4; twSteep < fftLength; twSteep *= 2)
         {
             for (int i = 0; i < twSteep; i++)
             {
                 FLOAT twAngle = -M_PI * direction * i / twSteep;
-                twiddles[twSteep + i - 1].re = cos(twAngle);
-                twiddles[twSteep + i - 1].im = sin(twAngle);
+                twiddles[twSteep + i - 4].re = cos(twAngle);
+                twiddles[twSteep + i - 4].im = sin(twAngle);
             }
         }
         int bit_cnt = 32 - getPowerOfTwo(length);
@@ -107,15 +109,15 @@ bool FFTransformerVec<FLOAT>::FFTransform(Complex<FLOAT>* data)
 	for (int butterfly = 0; butterfly < length; butterfly += steep)
     {
         Complex<FLOAT> &a = data[butterfly + 0];
-        Complex<FLOAT> &b = data[butterfly + 1];
+        //Complex<FLOAT> &b = data[butterfly + 1];
         Complex<FLOAT> &c = data[butterfly + 2];
-        Complex<FLOAT> &d = data[butterfly + 3];
+        //Complex<FLOAT> &d = data[butterfly + 3];
 
         Vec4f ab, cd;
         ab.load_a((float*)&a);
         cd.load_a((float*)&c);
         Vec4f sign_1 = reinterpret_f(Vec4i(0, 0, 1<<31, 1<<31));
-        Vec4f sign_2 = reinterpret_f(Vec4i(0, 0, 0, 1<<31));
+        Vec4f sign_2 = reinterpret_f(Vec4i(0, 0, 0,     1<<31));
 
         Vec4f ab_shuf = permute4f<2,3,0,1>(ab);
         ab = (ab ^ sign_1) + ab_shuf;
@@ -156,21 +158,61 @@ bool FFTransformerVec<FLOAT>::FFTransform(Complex<FLOAT>* data)
 	{
 		int twiddle_number = steep;
 		steep *= 2;
-		for (int twiddle = 0; twiddle < twiddle_number; twiddle++)
+		for (int twiddle = 0; twiddle < twiddle_number; twiddle+=2)
 		{
-			FLOAT c = twiddles[twiddle_number + twiddle - 1].re;
-			FLOAT s = twiddles[twiddle_number + twiddle - 1].im;
+            /*
+			FLOAT cb = twiddles[twiddle_number + twiddle - 4].re;
+			FLOAT sb = twiddles[twiddle_number + twiddle - 4].im;
+            FLOAT cd = twiddles[twiddle_number + twiddle - 3].re;
+			FLOAT sd = twiddles[twiddle_number + twiddle - 3].im;
+            */
+
+			float *tw = (float*)&twiddles[twiddle_number + twiddle - 4];
+
+			Vec4f tw_norm, tw_perm;
+			Vec4f sign_1 = reinterpret_f(Vec4i(1<<31, 0, 1<<31, 0));
+			tw_norm.load_a(tw);
+			tw_perm = permute4f<1,1,3,3>(tw_norm) ^ sign_1;
+			tw_norm = permute4f<0,0,2,2>(tw_norm);
+
 			for (int butterfly = twiddle; butterfly < length; butterfly += steep)
 			{
 				Complex<FLOAT> &a = data[butterfly];
 				Complex<FLOAT> &b = data[butterfly + twiddle_number];
-				FLOAT u = b.re * c - b.im * s;
-				FLOAT v = b.re * s + b.im * c;
+				//Complex<FLOAT> &c = data[butterfly + 1];
+				//Complex<FLOAT> &d = data[butterfly + 1 + twiddle_number];
 
-				b.re = a.re - u;
-				b.im = a.im - v;
-				a.re = a.re + u;
-				a.im = a.im + v;
+                Vec4f ac, bd;
+
+                ac.load_a((float*)&a);
+                bd.load_a((float*)&b);
+
+                Vec4f bd_perm = permute4f<1,0,3,2>(bd);
+                Vec4f uv = bd * tw_norm + bd_perm * tw_perm;
+                bd = ac - uv;
+                ac = ac + uv;
+
+                ac.store_a((float*)&a);
+                bd.store_a((float*)&b);
+                /*
+				FLOAT ub = b.re * cb - b.im * sb;
+				FLOAT vb = b.re * sb + b.im * cb;
+
+				FLOAT ud = d.re * cd - d.im * sd;
+				FLOAT vd = d.re * sd + d.im * cd;
+
+				b.re = a.re - ub;
+				b.im = a.im - vb;
+				d.re = c.re - ud;
+				d.im = c.im - vd;
+
+				a.re = a.re + ub;
+				a.im = a.im + vb;
+				c.re = c.re + ud;
+				c.im = c.im + vd;
+                continue;
+                */
+
 			}
 		}
 	}
