@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1400427511 source:d:\fft\project3\fftproject\complex.cpp
+1400427999 source:d:\fft\project3\fftproject\complex.cpp
 	"Complex.h"
 
-1400427504 d:\fft\project3\fftproject\complex.h
+1400428174 d:\fft\project3\fftproject\complex.h
 
-1400427174 source:d:\fft\project3\fftproject\fftransformer.cpp
+1400430900 source:d:\fft\project3\fftproject\fftransformer.cpp
 	"FFTransformer.h"
 
 1400425654 d:\fft\project3\fftproject\fftransformer.h

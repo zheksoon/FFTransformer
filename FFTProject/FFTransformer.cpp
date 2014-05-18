@@ -99,10 +99,69 @@ template <class FLOAT>
 bool FFTransformer<FLOAT>::FFTransform(Complex<FLOAT>* data)
 {
     if (length <= 0 || !isPowerOfTwo(length)) return false;
+    if (length == 1) return true;
 	arrayShuffle(data, length);
 	int stages = getPowerOfTwo(length);
-	int steep = 1;
-	for (int stage = 0; stage < stages; stage++)
+	//explicit first steep with singular twiddles
+	int steep = 4;
+	for (int butterfly = 0; butterfly < length; butterfly += steep)
+    {
+        Complex<FLOAT> &a = data[butterfly + 0];
+        Complex<FLOAT> &b = data[butterfly + 1];
+        Complex<FLOAT> &c = data[butterfly + 2];
+        Complex<FLOAT> &d = data[butterfly + 3];
+
+        FLOAT ua = a.re + b.re;
+        FLOAT va = a.im + b.im;
+        FLOAT ub = a.re - b.re;
+        FLOAT vb = a.im - b.im;
+
+        FLOAT uc = c.re + d.re;
+        FLOAT vc = c.im + d.im;
+        FLOAT ud = c.re - d.re;
+        FLOAT vd = c.im - d.im;
+
+        a.re = ua + uc;
+        a.im = va + vc;
+        c.re = ua - uc;
+        c.im = va - vc;
+
+        b.re = ub + vd;
+        b.im = vb - ud;
+        d.re = ub - vd;
+        d.im = vb + ud;
+    }
+    if (length == 2) return true;
+    //explicit second steep with PI/2 twiddles
+/*
+    steep = 4;
+    const FLOAT SQRT2_2 = 0.70710678118654752440084436210485;
+    for (int butterfly = 0; butterfly < length; butterfly += steep)
+    {
+        {
+            Complex<FLOAT> &a = data[butterfly + 0];
+            Complex<FLOAT> &b = data[butterfly + 2];
+            FLOAT u = b.re;
+            FLOAT v = b.im;
+            b.re = a.re - u;
+            b.im = a.im - v;
+            a.re = a.re + u;
+            a.im = a.im + v;
+        }
+        {
+            Complex<FLOAT> &a = data[butterfly + 1];
+            Complex<FLOAT> &b = data[butterfly + 3];
+            FLOAT u = b.re * SQRT2_2 - b.im * (-SQRT2_2);
+            FLOAT v = b.re * (-SQRT2_2) + b.im * SQRT2_2;
+            b.re = a.re - u;
+            b.im = a.im - v;
+            a.re = a.re + u;
+            a.im = a.im + v;
+        }
+
+    }
+*/
+	for (int stage = 2; stage < stages; stage++)
 	{
 		int twiddle_number = steep;
 		steep *= 2;
