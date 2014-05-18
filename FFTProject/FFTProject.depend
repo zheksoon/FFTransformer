@@ -4,17 +4,22 @@
 
 1400360282 d:\fft\project3\fftproject\complex.h
 
-1400367655 source:d:\fft\project3\fftproject\fftransformer.cpp
+1400413242 source:d:\fft\project3\fftproject\fftransformer.cpp
 	"FFTransformer.h"
 
 1400363313 d:\fft\project3\fftproject\fftransformer.h
 	<cmath>
 	"Complex.h"
 
-1400367716 source:d:\fft\project3\fftproject\main.cpp
+1400413069 source:d:\fft\project3\fftproject\main.cpp
 	<iostream>
 	<omp.h>
 	<cstdlib>
 	<Complex.h>
 	<FFTransformer.h>
+	"fftw/fftw3.h"
+
+1394922460 d:\fft\project3\fftproject\fftw\fftw3.h
+	<stdio.h>
+	<stddef.h>
 

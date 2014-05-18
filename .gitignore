@@ -21,4 +21,5 @@
 *.app
 
 # Only for FFT project
-FFTransformer.asm
+*.asm
+!fftw/*
