@@ -105,31 +105,68 @@ bool FFTransformerVec<FLOAT>::FFTransform(Complex<FLOAT>* data)
 	arrayShuffle(data, length);
 	int stages = getPowerOfTwo(length);
 	//explicit first steep with singular twiddles
-	int steep = 4;
+	int steep = 8;
+	const FLOAT SQRT2_2 = 0.70710678118654752440084436210485;
 	for (int butterfly = 0; butterfly < length; butterfly += steep)
     {
         Complex<FLOAT> &a = data[butterfly + 0];
-        //Complex<FLOAT> &b = data[butterfly + 1];
         Complex<FLOAT> &c = data[butterfly + 2];
-        //Complex<FLOAT> &d = data[butterfly + 3];
+        Complex<FLOAT> &e = data[butterfly + 4];
+        Complex<FLOAT> &g = data[butterfly + 6];
 
-        Vec4f ab, cd;
+        Vec4f ab, cd, ef, gh;
         ab.load_a((float*)&a);
         cd.load_a((float*)&c);
+        ef.load_a((float*)&e);
+        gh.load_a((float*)&g);
         Vec4f sign_1 = reinterpret_f(Vec4i(0, 0, 1<<31, 1<<31));
         Vec4f sign_2 = reinterpret_f(Vec4i(0, 0, 0,     1<<31));
+        Vec4f sign_3 = reinterpret_f(Vec4i(0, 0, 1<<31, 0));
+        Vec4f sign_4 = reinterpret_f(Vec4i(0, 1<<31, 1<<31, 0));
+        Vec4f sign_5 = reinterpret_f(Vec4i(0, 1<<31, 0, 0));
+        Vec4f sqrt2_4f_1(0.5,  0.5,  SQRT2_2,  SQRT2_2);
+        Vec4f sqrt2_4f_2(-0.5, 0.5, -SQRT2_2, -SQRT2_2);
+        Vec4f sqrt2_4f(SQRT2_2,-SQRT2_2,SQRT2_2,-SQRT2_2);
 
         Vec4f ab_shuf = permute4f<2,3,0,1>(ab);
         ab = (ab ^ sign_1) + ab_shuf;
-
         Vec4f cd_shuf = permute4f<2,3,0,1>(cd) ;
         cd = (cd ^ sign_1) + cd_shuf;
-
         Vec4f ab_fin = ab + (permute4f<0,1,3,2>(cd) ^ sign_2);
         Vec4f cd_fin = ab - (permute4f<0,1,3,2>(cd) ^ sign_2);
 
+        Vec4f ef_shuf = permute4f<2,3,0,1>(ef);
+        ef = (ef ^ sign_1) + ef_shuf;
+        Vec4f gh_shuf = permute4f<2,3,0,1>(gh) ;
+        gh = (gh ^ sign_1) + gh_shuf;
+        Vec4f ef_fin = ef + (permute4f<0,1,3,2>(gh) ^ sign_2);
+        Vec4f gh_fin = ef - (permute4f<0,1,3,2>(gh) ^ sign_2);
+
+
+        Vec4f ef_fin_shuf = permute4f<0,1,3,2>(ef_fin) ^ sign_2;
+        ef_shuf = (ef_fin + ef_fin_shuf) * sqrt2_4f_1;
+
+        Vec4f gh_fin_shuf = permute4f<0,1,3,2>(gh_fin) ^ sign_3;
+        gh_fin_shuf = (gh_fin + gh_fin_shuf) * sqrt2_4f_2;
+        gh_shuf = permute4f<1,0,2,3>(gh_fin_shuf);
+
+/*
+        Vec4f fh = blend4f<2,6,3,7>(ef_fin, gh_fin);
+        Vec4f fh_shuf = permute4f<2,3,0,1>(fh) ^ sign_4;
+        fh = (fh + fh_shuf) * sqrt2_4f;
+        ef_shuf = blend4f<0,1,4,6>(ef_fin, fh);
+        gh_shuf = blend4f<1,0,5,7>(gh_fin, fh) ^ sign_5;
+*/
+        ef_fin = ab_fin - ef_shuf;
+        ab_fin = ab_fin + ef_shuf;
+
+        gh_fin = cd_fin - gh_shuf;
+        cd_fin = cd_fin + gh_shuf;
+
         ab_fin.store_a((float*)&a);
         cd_fin.store_a((float*)&c);
+        ef_fin.store_a((float*)&e);
+        gh_fin.store_a((float*)&g);
 /*
         FLOAT ua = a.re + b.re;
         FLOAT va = a.im + b.im;
@@ -154,46 +191,49 @@ bool FFTransformerVec<FLOAT>::FFTransform(Complex<FLOAT>* data)
     }
     if (length == 2) return true;
 
-	for (int stage = 2; stage < stages; stage++)
+	for (int stage = 3; stage < stages; stage++)
 	{
 		int twiddle_number = steep;
 		steep *= 2;
-		for (int twiddle = 0; twiddle < twiddle_number; twiddle+=2)
+		for (int twiddle = 0; twiddle < twiddle_number; twiddle+=4)
 		{
-            /*
-			FLOAT cb = twiddles[twiddle_number + twiddle - 4].re;
-			FLOAT sb = twiddles[twiddle_number + twiddle - 4].im;
-            FLOAT cd = twiddles[twiddle_number + twiddle - 3].re;
-			FLOAT sd = twiddles[twiddle_number + twiddle - 3].im;
-            */
-
+		    Vec4f sign_1 = reinterpret_f(Vec4i(1<<31, 0, 1<<31, 0));
 			float *tw = (float*)&twiddles[twiddle_number + twiddle - 4];
-
-			Vec4f tw_norm, tw_perm;
-			Vec4f sign_1 = reinterpret_f(Vec4i(1<<31, 0, 1<<31, 0));
-			tw_norm.load_a(tw);
-			tw_perm = permute4f<1,1,3,3>(tw_norm) ^ sign_1;
-			tw_norm = permute4f<0,0,2,2>(tw_norm);
+			Vec4f tw_norm_1, tw_perm_1, tw_norm_2, tw_perm_2;
+			tw_norm_1.load_a(tw);
+			tw_perm_1 = permute4f<1,1,3,3>(tw_norm_1) ^ sign_1;
+			tw_norm_1 = permute4f<0,0,2,2>(tw_norm_1);
+			tw_norm_2.load_a(tw + 4);
+			tw_perm_2 = permute4f<1,1,3,3>(tw_norm_2) ^ sign_1;
+			tw_norm_2 = permute4f<0,0,2,2>(tw_norm_2);
 
 			for (int butterfly = twiddle; butterfly < length; butterfly += steep)
 			{
-				Complex<FLOAT> &a = data[butterfly];
-				Complex<FLOAT> &b = data[butterfly + twiddle_number];
-				//Complex<FLOAT> &c = data[butterfly + 1];
-				//Complex<FLOAT> &d = data[butterfly + 1 + twiddle_number];
+                Complex<FLOAT> &a = data[butterfly];
+                Complex<FLOAT> &b = data[butterfly + twiddle_number];
+                Complex<FLOAT> &e = data[butterfly + 2];
+                Complex<FLOAT> &g = data[butterfly + 2 + twiddle_number];
 
-                Vec4f ac, bd;
-
+                Vec4f ac, bd, ef, gh;
                 ac.load_a((float*)&a);
                 bd.load_a((float*)&b);
+                ef.load_a((float*)&e);
+                gh.load_a((float*)&g);
 
                 Vec4f bd_perm = permute4f<1,0,3,2>(bd);
-                Vec4f uv = bd * tw_norm + bd_perm * tw_perm;
-                bd = ac - uv;
-                ac = ac + uv;
+                Vec4f uv_bd = bd * tw_norm_1 + bd_perm * tw_perm_1;
+                bd = ac - uv_bd;
+                ac = ac + uv_bd;
+
+                Vec4f gh_perm = permute4f<1,0,3,2>(gh);
+                Vec4f uv_gh = gh * tw_norm_2 + gh_perm * tw_perm_2;
+                gh = ef - uv_gh;
+                ef = ef + uv_gh;
 
                 ac.store_a((float*)&a);
                 bd.store_a((float*)&b);
+                ef.store_a((float*)&e);
+                gh.store_a((float*)&g);
                 /*
 				FLOAT ub = b.re * cb - b.im * sb;
 				FLOAT vb = b.re * sb + b.im * cb;
@@ -212,18 +252,9 @@ bool FFTransformerVec<FLOAT>::FFTransform(Complex<FLOAT>* data)
 				c.im = c.im + vd;
                 continue;
                 */
-
 			}
 		}
 	}
-	/*
-	FLOAT rLength = 1.0 / length;
-	for (int i = 0; i < length; i++)
-    {
-        data[i].re *= rLength;
-        data[i].im *= rLength;
-    }
-    */
 	return true;
 }
 

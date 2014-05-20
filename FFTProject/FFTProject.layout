@@ -1,30 +1,33 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
-	<File name="main.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="vector\vectori128.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="323" topLine="2" />
+			<Cursor1 position="34111" topLine="882" />
 		</Cursor>
-		<Folding>
-			<Collapse line="16" />
-		</Folding>
 	</File>
-	<File name="FFTransformerVec.h" open="1" top="1" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="vector\vectorf128.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="336" topLine="0" />
+			<Cursor1 position="14891" topLine="440" />
+		</Cursor>
+	</File>
+	<File name="FFTransformerVec.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="410" topLine="2" />
 		</Cursor>
 	</File>
 	<File name="FFTransformerVec.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4263" topLine="67" />
+			<Cursor1 position="8531" topLine="149" />
 		</Cursor>
 		<Folding>
 			<Collapse line="4" />
 			<Collapse line="10" />
 			<Collapse line="16" />
 			<Collapse line="30" />
+			<Collapse line="45" />
 			<Collapse line="51" />
-			<Collapse line="57" />
+			<Collapse line="236" />
 		</Folding>
 	</File>
 	<File name="FFTransformer.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -34,7 +37,7 @@
 	</File>
 	<File name="FFTransformer.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="0" topLine="1" />
+			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="4" />
@@ -46,9 +49,22 @@
 			<Cursor1 position="148" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="325" topLine="2" />
+		</Cursor>
+		<Folding>
+			<Collapse line="16" />
+		</Folding>
+	</File>
 	<File name="Complex.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="20" topLine="0" />
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="vector\vectorclass.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1260" topLine="19" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>

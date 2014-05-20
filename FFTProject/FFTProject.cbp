@@ -25,16 +25,16 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-march=core2" />
 					<Add option="-fomit-frame-pointer" />
-					<Add option="-O2" />
+					<Add option="-O3" />
 					<Add option="-msse2" />
+					<Add option="-march=k8-sse3" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
 				</Linker>
 				<ExtraCommands>
-					<Add after="cmd /c objdump -M intel -d obj/release/FFTransformer.o &gt; disasm/FFTransformer.asm" />
+					<Add after="cmd /c objdump -M intel -d obj/release/FFTransformerVec.o &gt; disasm/FFTransformer.asm" />
 					<Add after="cmd /c copy /Y fftw\libfftw3f-3.dll bin\release\" />
 				</ExtraCommands>
 			</Target>
@@ -42,6 +42,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
+			<Add option="-msse2" />
 			<Add directory="D:/FFT/PROJECT3/FFTProject/vector" />
 		</Compiler>
 		<Linker>
@@ -55,6 +56,17 @@
 		<Unit filename="FFTransformerVec.cpp" />
 		<Unit filename="FFTransformerVec.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="vector/vectorclass.h" />
+		<Unit filename="vector/vectorf128.h" />
+		<Unit filename="vector/vectorf256.h" />
+		<Unit filename="vector/vectorf256e.h" />
+		<Unit filename="vector/vectori128.h" />
+		<Unit filename="vector/vectori256.h" />
+		<Unit filename="vector/vectori256e.h" />
+		<Unit filename="vector/vectormath_common.h" />
+		<Unit filename="vector/vectormath_exp.h" />
+		<Unit filename="vector/vectormath_lib.h" />
+		<Unit filename="vector/vectormath_trig.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

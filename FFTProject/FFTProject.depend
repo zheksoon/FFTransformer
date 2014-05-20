@@ -11,12 +11,11 @@
 	<cmath>
 	"Complex.h"
 
-1400439743 source:d:\fft\project3\fftproject\main.cpp
+1400453250 source:d:\fft\project3\fftproject\main.cpp
 	<iostream>
 	<omp.h>
 	<cstdlib>
 	<Complex.h>
-	<FFTransformer.h>
 	<FFTransformerVec.h>
 	"fftw/fftw3.h"
 
@@ -24,7 +23,7 @@
 	<stdio.h>
 	<stddef.h>
 
-1400445435 source:d:\fft\project3\fftproject\fftransformervec.cpp
+1400489065 source:d:\fft\project3\fftproject\fftransformervec.cpp
 	"FFTransformerVec.h"
 
 1400443767 d:\fft\project3\fftproject\fftransformervec.h

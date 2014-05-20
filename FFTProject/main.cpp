@@ -3,14 +3,13 @@
 #include <cstdlib>
 
 #include <Complex.h>
-#include <FFTransformer.h>
 #include <FFTransformerVec.h>
 #include "fftw/fftw3.h"
 
 using namespace std;
 
-const int FFT_SIZE  = 4096;
-const int MAX_ITER  = 1000;
+const int FFT_SIZE  = 32768;
+const int MAX_ITER  = 50;
 const int DATA_SIZE = FFT_SIZE * MAX_ITER;
 
 template <class T>
@@ -88,7 +87,7 @@ void testFFT()
 void testSin()
 {
     int N = 16;
-    FFTransformer<float> fft(N, 1);
+    FFTransformerVec<float> fft(N, 1);
     Complex<float>* data = new Complex<float>[N];
     for (int i = 0; i < N; i++)
     {
@@ -101,9 +100,11 @@ void testSin()
 
 int main()
 {
+
     cout << "Comparing to FFTW3..." << endl;
     compareFFTW3();
     cout << "-----------------" << endl;
+
     //testSin();
 
     cout << "Testing float..." << endl;
