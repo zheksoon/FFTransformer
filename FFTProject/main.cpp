@@ -4,12 +4,13 @@
 
 #include <Complex.h>
 #include <FFTransformerVec.h>
+#include <FFTransformerRecursive.h>
 #include "fftw/fftw3.h"
 
 using namespace std;
 
-const int FFT_SIZE  = 32768;
-const int MAX_ITER  = 50;
+const int FFT_SIZE  = 1048576;
+const int MAX_ITER  = 10;
 const int DATA_SIZE = FFT_SIZE * MAX_ITER;
 
 template <class T>
@@ -26,7 +27,7 @@ Complex<T>* prepareData(int dSize)
 
 void compareFFTW3()
 {
-    const int N = 65536;
+    const int N = FFT_SIZE;
     fftwf_complex *in, *out;
     fftwf_plan p;
     in  = (fftwf_complex*)fftwf_malloc(sizeof(fftwf_complex) * N);
@@ -47,7 +48,8 @@ void compareFFTW3()
         data[i].re = 100*(float)rand() / RAND_MAX;
         data[i].im = 100*(float)rand() / RAND_MAX;
     }
-    FFTransformerVec<float> FFT(N, 1);
+    //FFTransformerVec<float> FFT(N, 1);
+    FFTransformerRecursive<float> FFT(N, 1);
     FFT.FFTransform(data);
 
     float acc = 0;
@@ -71,6 +73,24 @@ void testFFT()
 {
     cout << "Preparing data..." << endl;
     FFTransformerVec<T> FFT(FFT_SIZE, 1);
+    Complex<T> *data = prepareData<T>(DATA_SIZE);
+    cout << "Starting testing..." << endl;
+    double tStart = omp_get_wtime();
+    for (int i = 0; i < MAX_ITER; i++)
+    {
+        FFT.FFTransform(&data[i * FFT_SIZE]);
+    }
+    double tEnd = omp_get_wtime();
+    cout << "Data mean: " << data[0].re << endl;
+    cout << "Transformation took " << 1e6*(tEnd - tStart)/MAX_ITER << " us" << endl;
+    delete[] data;
+}
+
+template <class T>
+void testFFT_2()
+{
+    cout << "Preparing data..." << endl;
+    FFTransformerRecursive<T> FFT(FFT_SIZE, 1);
     Complex<T> *data = prepareData<T>(DATA_SIZE);
     cout << "Starting testing..." << endl;
     double tStart = omp_get_wtime();
@@ -108,7 +128,7 @@ int main()
     //testSin();
 
     cout << "Testing float..." << endl;
-    testFFT<float>();
+    testFFT_2<float>();
     /*
     cout << "-----------------" << endl;
     cout << "Testing double..." << endl;

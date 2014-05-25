@@ -11,22 +11,23 @@
 	<cmath>
 	"Complex.h"
 
-1400453250 source:d:\fft\project3\fftproject\main.cpp
+1401047701 source:d:\fft\project3\fftproject\main.cpp
 	<iostream>
 	<omp.h>
 	<cstdlib>
 	<Complex.h>
 	<FFTransformerVec.h>
+	<FFTransformerRecursive.h>
 	"fftw/fftw3.h"
 
 1394922460 d:\fft\project3\fftproject\fftw\fftw3.h
 	<stdio.h>
 	<stddef.h>
 
-1400489065 source:d:\fft\project3\fftproject\fftransformervec.cpp
+1401047090 source:d:\fft\project3\fftproject\fftransformervec.cpp
 	"FFTransformerVec.h"
 
-1400443767 d:\fft\project3\fftproject\fftransformervec.h
+1401044731 d:\fft\project3\fftproject\fftransformervec.h
 	<cmath>
 	"vectorclass.h"
 	"Complex.h"
@@ -76,4 +77,12 @@
 
 1398179604 d:\fft\project3\fftproject\vector\vectorf256e.h
 	"vectorf128.h"
+
+1401048784 source:d:\fft\project3\fftproject\fftransformerrecursive.cpp
+	"FFTransformerRecursive.h"
+
+1401047582 d:\fft\project3\fftproject\fftransformerrecursive.h
+	<cmath>
+	"vectorclass.h"
+	"Complex.h"
 

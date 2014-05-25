@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 				<ExtraCommands>
 					<Add after="cmd /c objdump -M intel -d obj/debug/FFTransformer.o &gt; disasm/FFTransformer.asm" />
@@ -29,6 +30,7 @@
 					<Add option="-O3" />
 					<Add option="-msse2" />
 					<Add option="-march=k8-sse3" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -43,6 +45,7 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 			<Add option="-msse2" />
+			<Add option="-fopenmp" />
 			<Add directory="D:/FFT/PROJECT3/FFTProject/vector" />
 		</Compiler>
 		<Linker>
@@ -53,6 +56,8 @@
 		<Unit filename="Complex.h" />
 		<Unit filename="FFTransformer.cpp" />
 		<Unit filename="FFTransformer.h" />
+		<Unit filename="FFTransformerRecursive.cpp" />
+		<Unit filename="FFTransformerRecursive.h" />
 		<Unit filename="FFTransformerVec.cpp" />
 		<Unit filename="FFTransformerVec.h" />
 		<Unit filename="main.cpp" />
