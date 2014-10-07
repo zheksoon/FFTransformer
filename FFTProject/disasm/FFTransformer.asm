@@ -1,321 +1,102 @@
 
-obj/release/FFTransformerVec.o:     file format pe-i386
+obj/release/FFTransformerRecursive.o:     file format pe-i386
 
 
 Disassembly of section .text:
 
-00000000 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3>:
+00000000 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0>:
    0:	55                   	push   ebp
-   1:	31 c0                	xor    eax,eax
-   3:	57                   	push   edi
-   4:	89 cf                	mov    edi,ecx
-   6:	56                   	push   esi
-   7:	be ff ff ff ff       	mov    esi,0xffffffff
-   c:	53                   	push   ebx
-   d:	83 ec 3c             	sub    esp,0x3c
-  10:	8b 5c 24 54          	mov    ebx,DWORD PTR [esp+0x54]
-  14:	8b 54 24 50          	mov    edx,DWORD PTR [esp+0x50]
-  18:	89 4c 24 24          	mov    DWORD PTR [esp+0x24],ecx
-  1c:	85 db                	test   ebx,ebx
-  1e:	89 51 04             	mov    DWORD PTR [ecx+0x4],edx
-  21:	0f 9f c0             	setg   al
-  24:	89 41 08             	mov    DWORD PTR [ecx+0x8],eax
-  27:	89 d0                	mov    eax,edx
-  29:	83 c0 02             	add    eax,0x2
-  2c:	8d 14 c5 00 00 00 00 	lea    edx,[eax*8+0x0]
-  33:	3d 00 00 e0 0f       	cmp    eax,0xfe00000
-  38:	89 d0                	mov    eax,edx
-  3a:	0f 47 c6             	cmova  eax,esi
-  3d:	89 04 24             	mov    DWORD PTR [esp],eax
-  40:	e8 00 00 00 00       	call   45 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x45>
-  45:	89 47 0c             	mov    DWORD PTR [edi+0xc],eax
-  48:	8b 44 24 50          	mov    eax,DWORD PTR [esp+0x50]
-  4c:	83 c0 04             	add    eax,0x4
-  4f:	8d 14 85 00 00 00 00 	lea    edx,[eax*4+0x0]
-  56:	3d 00 00 c0 1f       	cmp    eax,0x1fc00000
-  5b:	0f 46 f2             	cmovbe esi,edx
-  5e:	89 34 24             	mov    DWORD PTR [esp],esi
-  61:	e8 00 00 00 00       	call   66 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x66>
-  66:	8b 57 0c             	mov    edx,DWORD PTR [edi+0xc]
-  69:	89 47 14             	mov    DWORD PTR [edi+0x14],eax
-  6c:	83 e0 f0             	and    eax,0xfffffff0
-  6f:	89 44 24 20          	mov    DWORD PTR [esp+0x20],eax
-  73:	89 47 18             	mov    DWORD PTR [edi+0x18],eax
-  76:	89 54 24 1c          	mov    DWORD PTR [esp+0x1c],edx
-  7a:	83 64 24 1c f0       	and    DWORD PTR [esp+0x1c],0xfffffff0
-  7f:	83 7c 24 50 04       	cmp    DWORD PTR [esp+0x50],0x4
-  84:	8b 54 24 1c          	mov    edx,DWORD PTR [esp+0x1c]
-  88:	89 57 10             	mov    DWORD PTR [edi+0x10],edx
-  8b:	0f 8e 6f 02 00 00    	jle    300 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x300>
-  91:	89 5c 24 28          	mov    DWORD PTR [esp+0x28],ebx
-  95:	bf 04 00 00 00       	mov    edi,0x4
-  9a:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
-  9e:	dc 0d 00 00 00 00    	fmul   QWORD PTR ds:0x0
-  a4:	dd 5c 24 10          	fstp   QWORD PTR [esp+0x10]
-  a8:	89 7c 24 28          	mov    DWORD PTR [esp+0x28],edi
-  ac:	31 db                	xor    ebx,ebx
-  ae:	83 ff 08             	cmp    edi,0x8
-  b1:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
-  b5:	dd 5c 24 08          	fstp   QWORD PTR [esp+0x8]
-  b9:	0f 8e ed 01 00 00    	jle    2ac <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x2ac>
-  bf:	8b 44 24 1c          	mov    eax,DWORD PTR [esp+0x1c]
-  c3:	31 db                	xor    ebx,ebx
-  c5:	8d 34 f8             	lea    esi,[eax+edi*8]
-  c8:	8d 47 f7             	lea    eax,[edi-0x9]
-  cb:	c1 e8 03             	shr    eax,0x3
-  ce:	8d 2c c5 08 00 00 00 	lea    ebp,[eax*8+0x8]
-  d5:	89 5c 24 28          	mov    DWORD PTR [esp+0x28],ebx
-  d9:	0f 0d 4e 0c          	prefetchw BYTE PTR [esi+0xc]
-  dd:	83 c6 40             	add    esi,0x40
-  e0:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
-  e4:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
-  e8:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
-  ec:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
-  f0:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
-  f4:	dd 14 24             	fst    QWORD PTR [esp]
-  f7:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
-  fb:	e8 00 00 00 00       	call   100 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x100>
- 100:	d9 5e a0             	fstp   DWORD PTR [esi-0x60]
- 103:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 107:	dd 1c 24             	fstp   QWORD PTR [esp]
- 10a:	e8 00 00 00 00       	call   10f <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x10f>
- 10f:	8d 43 01             	lea    eax,[ebx+0x1]
- 112:	d9 5e a4             	fstp   DWORD PTR [esi-0x5c]
- 115:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
- 119:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 11d:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 121:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 125:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 129:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 12d:	dd 14 24             	fst    QWORD PTR [esp]
- 130:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 134:	e8 00 00 00 00       	call   139 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x139>
- 139:	d9 5e a8             	fstp   DWORD PTR [esi-0x58]
- 13c:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 140:	dd 1c 24             	fstp   QWORD PTR [esp]
- 143:	e8 00 00 00 00       	call   148 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x148>
- 148:	8d 43 02             	lea    eax,[ebx+0x2]
- 14b:	d9 5e ac             	fstp   DWORD PTR [esi-0x54]
- 14e:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
- 152:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 156:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 15a:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 15e:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 162:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 166:	dd 14 24             	fst    QWORD PTR [esp]
- 169:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 16d:	e8 00 00 00 00       	call   172 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x172>
- 172:	d9 5e b0             	fstp   DWORD PTR [esi-0x50]
- 175:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 179:	dd 1c 24             	fstp   QWORD PTR [esp]
- 17c:	e8 00 00 00 00       	call   181 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x181>
- 181:	8d 43 03             	lea    eax,[ebx+0x3]
- 184:	d9 5e b4             	fstp   DWORD PTR [esi-0x4c]
- 187:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
- 18b:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 18f:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 193:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 197:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 19b:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 19f:	dd 14 24             	fst    QWORD PTR [esp]
- 1a2:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 1a6:	e8 00 00 00 00       	call   1ab <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x1ab>
- 1ab:	d9 5e b8             	fstp   DWORD PTR [esi-0x48]
- 1ae:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 1b2:	dd 1c 24             	fstp   QWORD PTR [esp]
- 1b5:	e8 00 00 00 00       	call   1ba <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x1ba>
- 1ba:	8d 43 04             	lea    eax,[ebx+0x4]
- 1bd:	d9 5e bc             	fstp   DWORD PTR [esi-0x44]
- 1c0:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
- 1c4:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 1c8:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 1cc:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 1d0:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 1d4:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 1d8:	dd 14 24             	fst    QWORD PTR [esp]
- 1db:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 1df:	e8 00 00 00 00       	call   1e4 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x1e4>
- 1e4:	d9 5e c0             	fstp   DWORD PTR [esi-0x40]
- 1e7:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 1eb:	dd 1c 24             	fstp   QWORD PTR [esp]
- 1ee:	e8 00 00 00 00       	call   1f3 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x1f3>
- 1f3:	8d 43 05             	lea    eax,[ebx+0x5]
- 1f6:	d9 5e c4             	fstp   DWORD PTR [esi-0x3c]
- 1f9:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
- 1fd:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 201:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 205:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 209:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 20d:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 211:	dd 14 24             	fst    QWORD PTR [esp]
- 214:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 218:	e8 00 00 00 00       	call   21d <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x21d>
- 21d:	d9 5e c8             	fstp   DWORD PTR [esi-0x38]
- 220:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 224:	dd 1c 24             	fstp   QWORD PTR [esp]
- 227:	e8 00 00 00 00       	call   22c <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x22c>
- 22c:	8d 43 06             	lea    eax,[ebx+0x6]
- 22f:	d9 5e cc             	fstp   DWORD PTR [esi-0x34]
- 232:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
- 236:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 23a:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 23e:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 242:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 246:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 24a:	dd 14 24             	fst    QWORD PTR [esp]
- 24d:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 251:	e8 00 00 00 00       	call   256 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x256>
- 256:	d9 5e d0             	fstp   DWORD PTR [esi-0x30]
- 259:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 25d:	dd 1c 24             	fstp   QWORD PTR [esp]
- 260:	e8 00 00 00 00       	call   265 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x265>
- 265:	8d 43 07             	lea    eax,[ebx+0x7]
- 268:	d9 5e d4             	fstp   DWORD PTR [esi-0x2c]
- 26b:	83 c3 08             	add    ebx,0x8
- 26e:	89 44 24 28          	mov    DWORD PTR [esp+0x28],eax
- 272:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 276:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 27a:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 27e:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 282:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 286:	dd 14 24             	fst    QWORD PTR [esp]
- 289:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 28d:	e8 00 00 00 00       	call   292 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x292>
- 292:	d9 5e d8             	fstp   DWORD PTR [esi-0x28]
- 295:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 299:	dd 1c 24             	fstp   QWORD PTR [esp]
- 29c:	e8 00 00 00 00       	call   2a1 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x2a1>
- 2a1:	d9 5e dc             	fstp   DWORD PTR [esi-0x24]
- 2a4:	39 eb                	cmp    ebx,ebp
- 2a6:	0f 85 29 fe ff ff    	jne    d5 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0xd5>
- 2ac:	8b 4c 24 1c          	mov    ecx,DWORD PTR [esp+0x1c]
- 2b0:	8d 04 1f             	lea    eax,[edi+ebx*1]
- 2b3:	8d 34 c1             	lea    esi,[ecx+eax*8]
- 2b6:	89 5c 24 28          	mov    DWORD PTR [esp+0x28],ebx
- 2ba:	43                   	inc    ebx
- 2bb:	83 c6 08             	add    esi,0x8
- 2be:	db 44 24 28          	fild   DWORD PTR [esp+0x28]
- 2c2:	dc 4c 24 10          	fmul   QWORD PTR [esp+0x10]
- 2c6:	dc 74 24 08          	fdiv   QWORD PTR [esp+0x8]
- 2ca:	d9 5c 24 2c          	fstp   DWORD PTR [esp+0x2c]
- 2ce:	d9 44 24 2c          	fld    DWORD PTR [esp+0x2c]
- 2d2:	dd 14 24             	fst    QWORD PTR [esp]
- 2d5:	d9 5c 24 18          	fstp   DWORD PTR [esp+0x18]
- 2d9:	e8 00 00 00 00       	call   2de <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x2de>
- 2de:	d9 5e d8             	fstp   DWORD PTR [esi-0x28]
- 2e1:	d9 44 24 18          	fld    DWORD PTR [esp+0x18]
- 2e5:	dd 1c 24             	fstp   QWORD PTR [esp]
- 2e8:	e8 00 00 00 00       	call   2ed <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x2ed>
- 2ed:	d9 5e dc             	fstp   DWORD PTR [esi-0x24]
- 2f0:	39 df                	cmp    edi,ebx
- 2f2:	7f c2                	jg     2b6 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x2b6>
- 2f4:	01 ff                	add    edi,edi
- 2f6:	39 7c 24 50          	cmp    DWORD PTR [esp+0x50],edi
- 2fa:	0f 8f a8 fd ff ff    	jg     a8 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0xa8>
- 300:	8b 74 24 24          	mov    esi,DWORD PTR [esp+0x24]
- 304:	31 d2                	xor    edx,edx
- 306:	8b 46 04             	mov    eax,DWORD PTR [esi+0x4]
- 309:	0f bd c8             	bsr    ecx,eax
- 30c:	83 f1 1f             	xor    ecx,0x1f
- 30f:	41                   	inc    ecx
- 310:	85 c0                	test   eax,eax
- 312:	7e 5d                	jle    371 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x371>
- 314:	8b 5c 24 20          	mov    ebx,DWORD PTR [esp+0x20]
- 318:	0f b6 c2             	movzx  eax,dl
- 31b:	89 c7                	mov    edi,eax
- 31d:	0f b6 80 00 00 00 00 	movzx  eax,BYTE PTR [eax+0x0]
- 324:	31 d7                	xor    edi,edx
- 326:	09 f8                	or     eax,edi
- 328:	c1 c8 08             	ror    eax,0x8
- 32b:	0f b6 f8             	movzx  edi,al
- 32e:	31 f8                	xor    eax,edi
- 330:	89 c5                	mov    ebp,eax
- 332:	0f b6 87 00 00 00 00 	movzx  eax,BYTE PTR [edi+0x0]
- 339:	09 e8                	or     eax,ebp
- 33b:	c1 c8 08             	ror    eax,0x8
- 33e:	0f b6 f8             	movzx  edi,al
- 341:	31 f8                	xor    eax,edi
- 343:	89 c5                	mov    ebp,eax
- 345:	0f b6 87 00 00 00 00 	movzx  eax,BYTE PTR [edi+0x0]
- 34c:	09 e8                	or     eax,ebp
- 34e:	c1 c8 08             	ror    eax,0x8
- 351:	0f b6 f8             	movzx  edi,al
- 354:	31 f8                	xor    eax,edi
- 356:	89 c5                	mov    ebp,eax
- 358:	0f b6 87 00 00 00 00 	movzx  eax,BYTE PTR [edi+0x0]
- 35f:	09 e8                	or     eax,ebp
- 361:	c1 c8 08             	ror    eax,0x8
- 364:	0f c8                	bswap  eax
- 366:	d3 e8                	shr    eax,cl
- 368:	89 04 93             	mov    DWORD PTR [ebx+edx*4],eax
- 36b:	42                   	inc    edx
- 36c:	3b 56 04             	cmp    edx,DWORD PTR [esi+0x4]
- 36f:	7c a7                	jl     318 <__ZN16FFTransformerVecIfE7FFTInitEii.part.3+0x318>
- 371:	83 c4 3c             	add    esp,0x3c
- 374:	b8 01 00 00 00       	mov    eax,0x1
- 379:	5b                   	pop    ebx
- 37a:	5e                   	pop    esi
- 37b:	5f                   	pop    edi
- 37c:	5d                   	pop    ebp
- 37d:	c2 08 00             	ret    0x8
+   1:	89 e5                	mov    ebp,esp
+   3:	56                   	push   esi
+   4:	53                   	push   ebx
+   5:	83 ec 50             	sub    esp,0x50
+   8:	8b 5d 08             	mov    ebx,DWORD PTR [ebp+0x8]
+   b:	c7 45 dc 00 00 00 00 	mov    DWORD PTR [ebp-0x24],0x0
+  12:	c7 45 e0 00 00 00 00 	mov    DWORD PTR [ebp-0x20],0x0
+  19:	8d 45 c4             	lea    eax,[ebp-0x3c]
+  1c:	89 04 24             	mov    DWORD PTR [esp],eax
+  1f:	e8 00 00 00 00       	call   24 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x24>
+  24:	8b 33                	mov    esi,DWORD PTR [ebx]
+  26:	e8 00 00 00 00       	call   2b <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x2b>
+  2b:	83 f8 01             	cmp    eax,0x1
+  2e:	74 36                	je     66 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x66>
+  30:	83 f8 01             	cmp    eax,0x1
+  33:	72 51                	jb     86 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x86>
+  35:	83 f8 02             	cmp    eax,0x2
+  38:	74 09                	je     43 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x43>
+  3a:	0f 0b                	ud2    
+  3c:	e8 00 00 00 00       	call   41 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x41>
+  41:	eb e8                	jmp    2b <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x2b>
+  43:	8b 43 08             	mov    eax,DWORD PTR [ebx+0x8]
+  46:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  4a:	8b 53 04             	mov    edx,DWORD PTR [ebx+0x4]
+  4d:	8d 04 c2             	lea    eax,[edx+eax*8]
+  50:	89 04 24             	mov    DWORD PTR [esp],eax
+  53:	c7 45 c8 00 00 00 00 	mov    DWORD PTR [ebp-0x38],0x0
+  5a:	89 f1                	mov    ecx,esi
+  5c:	e8 00 00 00 00       	call   61 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x61>
+  61:	83 ec 08             	sub    esp,0x8
+  64:	eb d6                	jmp    3c <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x3c>
+  66:	8b 43 08             	mov    eax,DWORD PTR [ebx+0x8]
+  69:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  6d:	8b 43 04             	mov    eax,DWORD PTR [ebx+0x4]
+  70:	89 04 24             	mov    DWORD PTR [esp],eax
+  73:	c7 45 c8 00 00 00 00 	mov    DWORD PTR [ebp-0x38],0x0
+  7a:	89 f1                	mov    ecx,esi
+  7c:	e8 00 00 00 00       	call   81 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x81>
+  81:	83 ec 08             	sub    esp,0x8
+  84:	eb b6                	jmp    3c <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x3c>
+  86:	e8 00 00 00 00       	call   8b <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x8b>
+  8b:	8d 45 c4             	lea    eax,[ebp-0x3c]
+  8e:	89 04 24             	mov    DWORD PTR [esp],eax
+  91:	e8 00 00 00 00       	call   96 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi._omp_fn.0+0x96>
+  96:	8d 65 f8             	lea    esp,[ebp-0x8]
+  99:	5b                   	pop    ebx
+  9a:	5e                   	pop    esi
+  9b:	5d                   	pop    ebp
+  9c:	c3                   	ret    
+  9d:	90                   	nop
+  9e:	90                   	nop
+  9f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfED1Ev:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfED1Ev:
 
-00000000 <__ZN16FFTransformerVecIfED1Ev>:
+00000000 <__ZN22FFTransformerRecursiveIfED1Ev>:
    0:	53                   	push   ebx
-   1:	89 cb                	mov    ebx,ecx
-   3:	83 ec 18             	sub    esp,0x18
-   6:	8b 41 0c             	mov    eax,DWORD PTR [ecx+0xc]
-   9:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
+   1:	83 ec 18             	sub    esp,0x18
+   4:	89 cb                	mov    ebx,ecx
+   6:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
+   c:	8b 41 0c             	mov    eax,DWORD PTR [ecx+0xc]
    f:	85 c0                	test   eax,eax
-  11:	74 08                	je     1b <__ZN16FFTransformerVecIfED1Ev+0x1b>
+  11:	74 08                	je     1b <__ZN22FFTransformerRecursiveIfED1Ev+0x1b>
   13:	89 04 24             	mov    DWORD PTR [esp],eax
-  16:	e8 00 00 00 00       	call   1b <__ZN16FFTransformerVecIfED1Ev+0x1b>
+  16:	e8 00 00 00 00       	call   1b <__ZN22FFTransformerRecursiveIfED1Ev+0x1b>
   1b:	8b 43 14             	mov    eax,DWORD PTR [ebx+0x14]
   1e:	85 c0                	test   eax,eax
-  20:	74 08                	je     2a <__ZN16FFTransformerVecIfED1Ev+0x2a>
+  20:	74 08                	je     2a <__ZN22FFTransformerRecursiveIfED1Ev+0x2a>
   22:	89 04 24             	mov    DWORD PTR [esp],eax
-  25:	e8 00 00 00 00       	call   2a <__ZN16FFTransformerVecIfED1Ev+0x2a>
+  25:	e8 00 00 00 00       	call   2a <__ZN22FFTransformerRecursiveIfED1Ev+0x2a>
   2a:	83 c4 18             	add    esp,0x18
   2d:	5b                   	pop    ebx
   2e:	c3                   	ret    
   2f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfED0Ev:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfED0Ev:
 
-00000000 <__ZN16FFTransformerVecIfED0Ev>:
+00000000 <__ZN22FFTransformerRecursiveIfED0Ev>:
    0:	53                   	push   ebx
-   1:	89 cb                	mov    ebx,ecx
-   3:	83 ec 18             	sub    esp,0x18
-   6:	8b 41 0c             	mov    eax,DWORD PTR [ecx+0xc]
-   9:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
-   f:	85 c0                	test   eax,eax
-  11:	74 08                	je     1b <__ZN16FFTransformerVecIfED0Ev+0x1b>
-  13:	89 04 24             	mov    DWORD PTR [esp],eax
-  16:	e8 00 00 00 00       	call   1b <__ZN16FFTransformerVecIfED0Ev+0x1b>
-  1b:	8b 43 14             	mov    eax,DWORD PTR [ebx+0x14]
-  1e:	85 c0                	test   eax,eax
-  20:	74 08                	je     2a <__ZN16FFTransformerVecIfED0Ev+0x2a>
-  22:	89 04 24             	mov    DWORD PTR [esp],eax
-  25:	e8 00 00 00 00       	call   2a <__ZN16FFTransformerVecIfED0Ev+0x2a>
-  2a:	89 1c 24             	mov    DWORD PTR [esp],ebx
-  2d:	e8 00 00 00 00       	call   32 <__ZN16FFTransformerVecIfED0Ev+0x32>
-  32:	83 c4 18             	add    esp,0x18
-  35:	5b                   	pop    ebx
-  36:	c3                   	ret    
-  37:	90                   	nop
-  38:	90                   	nop
-  39:	90                   	nop
-  3a:	90                   	nop
-  3b:	90                   	nop
-  3c:	90                   	nop
-  3d:	90                   	nop
-  3e:	90                   	nop
-  3f:	90                   	nop
+   1:	83 ec 18             	sub    esp,0x18
+   4:	89 cb                	mov    ebx,ecx
+   6:	e8 00 00 00 00       	call   b <__ZN22FFTransformerRecursiveIfED0Ev+0xb>
+   b:	89 1c 24             	mov    DWORD PTR [esp],ebx
+   e:	e8 00 00 00 00       	call   13 <__ZN22FFTransformerRecursiveIfED0Ev+0x13>
+  13:	83 c4 18             	add    esp,0x18
+  16:	5b                   	pop    ebx
+  17:	c3                   	ret    
 
-Disassembly of section .text$_ZN16FFTransformerVecIfE12isPowerOfTwoEj:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE12isPowerOfTwoEj:
 
-00000000 <__ZN16FFTransformerVecIfE12isPowerOfTwoEj>:
+00000000 <__ZN22FFTransformerRecursiveIfE12isPowerOfTwoEj>:
    0:	8b 44 24 04          	mov    eax,DWORD PTR [esp+0x4]
    4:	8d 50 ff             	lea    edx,[eax-0x1]
    7:	85 c2                	test   edx,eax
@@ -323,127 +104,77 @@ Disassembly of section .text$_ZN16FFTransformerVecIfE12isPowerOfTwoEj:
    c:	c2 04 00             	ret    0x4
    f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfE13getPowerOfTwoEj:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE13getPowerOfTwoEj:
 
-00000000 <__ZN16FFTransformerVecIfE13getPowerOfTwoEj>:
+00000000 <__ZN22FFTransformerRecursiveIfE13getPowerOfTwoEj>:
    0:	0f bd 54 24 04       	bsr    edx,DWORD PTR [esp+0x4]
-   5:	b8 1f 00 00 00       	mov    eax,0x1f
-   a:	83 f2 1f             	xor    edx,0x1f
+   5:	83 f2 1f             	xor    edx,0x1f
+   8:	b8 1f 00 00 00       	mov    eax,0x1f
    d:	29 d0                	sub    eax,edx
    f:	c2 04 00             	ret    0x4
   12:	90                   	nop
   13:	90                   	nop
-  14:	90                   	nop
-  15:	90                   	nop
-  16:	90                   	nop
-  17:	90                   	nop
-  18:	90                   	nop
-  19:	90                   	nop
-  1a:	90                   	nop
-  1b:	90                   	nop
-  1c:	90                   	nop
-  1d:	90                   	nop
-  1e:	90                   	nop
-  1f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfE15bitReverseInt32Ej:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE15bitReverseInt32Ej:
 
-00000000 <__ZN16FFTransformerVecIfE15bitReverseInt32Ej>:
-   0:	8b 54 24 04          	mov    edx,DWORD PTR [esp+0x4]
-   4:	0f b6 c2             	movzx  eax,dl
-   7:	31 c2                	xor    edx,eax
-   9:	0f b6 80 00 00 00 00 	movzx  eax,BYTE PTR [eax+0x0]
-  10:	09 d0                	or     eax,edx
-  12:	c1 c8 08             	ror    eax,0x8
-  15:	0f b6 d0             	movzx  edx,al
-  18:	31 d0                	xor    eax,edx
-  1a:	89 c1                	mov    ecx,eax
-  1c:	0f b6 82 00 00 00 00 	movzx  eax,BYTE PTR [edx+0x0]
-  23:	09 c8                	or     eax,ecx
-  25:	c1 c8 08             	ror    eax,0x8
-  28:	0f b6 d0             	movzx  edx,al
-  2b:	31 d0                	xor    eax,edx
-  2d:	89 c1                	mov    ecx,eax
-  2f:	0f b6 82 00 00 00 00 	movzx  eax,BYTE PTR [edx+0x0]
-  36:	09 c8                	or     eax,ecx
-  38:	c1 c8 08             	ror    eax,0x8
-  3b:	0f b6 d0             	movzx  edx,al
-  3e:	31 d0                	xor    eax,edx
-  40:	89 c1                	mov    ecx,eax
-  42:	0f b6 82 00 00 00 00 	movzx  eax,BYTE PTR [edx+0x0]
-  49:	09 c8                	or     eax,ecx
-  4b:	c1 c8 08             	ror    eax,0x8
-  4e:	0f c8                	bswap  eax
-  50:	c2 04 00             	ret    0x4
-  53:	90                   	nop
-  54:	90                   	nop
-  55:	90                   	nop
-  56:	90                   	nop
-  57:	90                   	nop
-  58:	90                   	nop
-  59:	90                   	nop
-  5a:	90                   	nop
-  5b:	90                   	nop
-  5c:	90                   	nop
-  5d:	90                   	nop
-  5e:	90                   	nop
-  5f:	90                   	nop
+00000000 <__ZN22FFTransformerRecursiveIfE15bitReverseInt32Ej>:
+   0:	8b 44 24 04          	mov    eax,DWORD PTR [esp+0x4]
+   4:	ba 04 00 00 00       	mov    edx,0x4
+   9:	0f b6 c8             	movzx  ecx,al
+   c:	31 c8                	xor    eax,ecx
+   e:	0f b6 89 00 00 00 00 	movzx  ecx,BYTE PTR [ecx+0x0]
+  15:	09 c8                	or     eax,ecx
+  17:	c1 c8 08             	ror    eax,0x8
+  1a:	4a                   	dec    edx
+  1b:	75 ec                	jne    9 <__ZN22FFTransformerRecursiveIfE15bitReverseInt32Ej+0x9>
+  1d:	0f c8                	bswap  eax
+  1f:	c2 04 00             	ret    0x4
+  22:	90                   	nop
+  23:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfE12arrayShuffleEP7ComplexIfEi:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE12arrayShuffleEP7ComplexIfEi:
 
-00000000 <__ZN16FFTransformerVecIfE12arrayShuffleEP7ComplexIfEi>:
+00000000 <__ZN22FFTransformerRecursiveIfE12arrayShuffleEP7ComplexIfEi>:
    0:	55                   	push   ebp
    1:	57                   	push   edi
    2:	56                   	push   esi
    3:	53                   	push   ebx
-   4:	8b 5c 24 18          	mov    ebx,DWORD PTR [esp+0x18]
-   8:	8b 7c 24 14          	mov    edi,DWORD PTR [esp+0x14]
-   c:	85 db                	test   ebx,ebx
-   e:	7e 3d                	jle    4d <__ZN16FFTransformerVecIfE12arrayShuffleEP7ComplexIfEi+0x4d>
-  10:	8b 71 18             	mov    esi,DWORD PTR [ecx+0x18]
-  13:	89 fa                	mov    edx,edi
-  15:	31 c0                	xor    eax,eax
+   4:	8b 7c 24 14          	mov    edi,DWORD PTR [esp+0x14]
+   8:	8b 74 24 18          	mov    esi,DWORD PTR [esp+0x18]
+   c:	85 f6                	test   esi,esi
+   e:	7e 38                	jle    48 <__ZN22FFTransformerRecursiveIfE12arrayShuffleEP7ComplexIfEi+0x48>
+  10:	89 fa                	mov    edx,edi
+  12:	b8 00 00 00 00       	mov    eax,0x0
   17:	89 f5                	mov    ebp,esi
-  19:	8d b4 26 00 00 00 00 	lea    esi,[esi+eiz*1+0x0]
-  20:	8b 4c 85 00          	mov    ecx,DWORD PTR [ebp+eax*4+0x0]
-  24:	39 c1                	cmp    ecx,eax
-  26:	7e 1d                	jle    45 <__ZN16FFTransformerVecIfE12arrayShuffleEP7ComplexIfEi+0x45>
-  28:	8b 7c 24 14          	mov    edi,DWORD PTR [esp+0x14]
-  2c:	d9 02                	fld    DWORD PTR [edx]
-  2e:	d9 42 04             	fld    DWORD PTR [edx+0x4]
-  31:	d9 c9                	fxch   st(1)
-  33:	8d 0c cf             	lea    ecx,[edi+ecx*8]
-  36:	8b 31                	mov    esi,DWORD PTR [ecx]
-  38:	8b 79 04             	mov    edi,DWORD PTR [ecx+0x4]
-  3b:	89 32                	mov    DWORD PTR [edx],esi
-  3d:	89 7a 04             	mov    DWORD PTR [edx+0x4],edi
-  40:	d9 19                	fstp   DWORD PTR [ecx]
-  42:	d9 59 04             	fstp   DWORD PTR [ecx+0x4]
-  45:	40                   	inc    eax
-  46:	83 c2 08             	add    edx,0x8
-  49:	39 d8                	cmp    eax,ebx
-  4b:	75 d3                	jne    20 <__ZN16FFTransformerVecIfE12arrayShuffleEP7ComplexIfEi+0x20>
-  4d:	5b                   	pop    ebx
-  4e:	5e                   	pop    esi
-  4f:	5f                   	pop    edi
-  50:	5d                   	pop    ebp
-  51:	c2 08 00             	ret    0x8
-  54:	90                   	nop
-  55:	90                   	nop
-  56:	90                   	nop
-  57:	90                   	nop
-  58:	90                   	nop
-  59:	90                   	nop
-  5a:	90                   	nop
-  5b:	90                   	nop
-  5c:	90                   	nop
-  5d:	90                   	nop
-  5e:	90                   	nop
-  5f:	90                   	nop
+  19:	8b 59 18             	mov    ebx,DWORD PTR [ecx+0x18]
+  1c:	8b 1c 83             	mov    ebx,DWORD PTR [ebx+eax*4]
+  1f:	39 c3                	cmp    ebx,eax
+  21:	7e 1d                	jle    40 <__ZN22FFTransformerRecursiveIfE12arrayShuffleEP7ComplexIfEi+0x40>
+  23:	d9 02                	fld    DWORD PTR [edx]
+  25:	d9 42 04             	fld    DWORD PTR [edx+0x4]
+  28:	d9 c9                	fxch   st(1)
+  2a:	8b 7c 24 14          	mov    edi,DWORD PTR [esp+0x14]
+  2e:	8d 1c df             	lea    ebx,[edi+ebx*8]
+  31:	8b 33                	mov    esi,DWORD PTR [ebx]
+  33:	8b 7b 04             	mov    edi,DWORD PTR [ebx+0x4]
+  36:	89 32                	mov    DWORD PTR [edx],esi
+  38:	89 7a 04             	mov    DWORD PTR [edx+0x4],edi
+  3b:	d9 1b                	fstp   DWORD PTR [ebx]
+  3d:	d9 5b 04             	fstp   DWORD PTR [ebx+0x4]
+  40:	40                   	inc    eax
+  41:	83 c2 08             	add    edx,0x8
+  44:	39 e8                	cmp    eax,ebp
+  46:	75 d1                	jne    19 <__ZN22FFTransformerRecursiveIfE12arrayShuffleEP7ComplexIfEi+0x19>
+  48:	5b                   	pop    ebx
+  49:	5e                   	pop    esi
+  4a:	5f                   	pop    edi
+  4b:	5d                   	pop    ebp
+  4c:	c2 08 00             	ret    0x8
+  4f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfEC2Ev:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfEC2Ev:
 
-00000000 <__ZN16FFTransformerVecIfEC2Ev>:
+00000000 <__ZN22FFTransformerRecursiveIfEC2Ev>:
    0:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
    6:	c7 41 10 00 00 00 00 	mov    DWORD PTR [ecx+0x10],0x0
    d:	c7 41 18 00 00 00 00 	mov    DWORD PTR [ecx+0x18],0x0
@@ -451,18 +182,10 @@ Disassembly of section .text$_ZN16FFTransformerVecIfEC2Ev:
   15:	90                   	nop
   16:	90                   	nop
   17:	90                   	nop
-  18:	90                   	nop
-  19:	90                   	nop
-  1a:	90                   	nop
-  1b:	90                   	nop
-  1c:	90                   	nop
-  1d:	90                   	nop
-  1e:	90                   	nop
-  1f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfEC1Ev:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfEC1Ev:
 
-00000000 <__ZN16FFTransformerVecIfEC1Ev>:
+00000000 <__ZN22FFTransformerRecursiveIfEC1Ev>:
    0:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
    6:	c7 41 10 00 00 00 00 	mov    DWORD PTR [ecx+0x10],0x0
    d:	c7 41 18 00 00 00 00 	mov    DWORD PTR [ecx+0x18],0x0
@@ -470,294 +193,496 @@ Disassembly of section .text$_ZN16FFTransformerVecIfEC1Ev:
   15:	90                   	nop
   16:	90                   	nop
   17:	90                   	nop
-  18:	90                   	nop
-  19:	90                   	nop
-  1a:	90                   	nop
-  1b:	90                   	nop
-  1c:	90                   	nop
-  1d:	90                   	nop
-  1e:	90                   	nop
-  1f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfEC2Eii:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfED2Ev:
 
-00000000 <__ZN16FFTransformerVecIfEC2Eii>:
-   0:	55                   	push   ebp
-   1:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
-   7:	c7 41 10 00 00 00 00 	mov    DWORD PTR [ecx+0x10],0x0
-   e:	89 e5                	mov    ebp,esp
-  10:	53                   	push   ebx
-  11:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  14:	85 c0                	test   eax,eax
-  16:	7e 10                	jle    28 <__ZN16FFTransformerVecIfEC2Eii+0x28>
-  18:	8d 50 ff             	lea    edx,[eax-0x1]
-  1b:	85 c2                	test   edx,eax
-  1d:	75 09                	jne    28 <__ZN16FFTransformerVecIfEC2Eii+0x28>
-  1f:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  22:	c9                   	leave  
-  23:	e9 00 00 00 00       	jmp    28 <__ZN16FFTransformerVecIfEC2Eii+0x28>
-  28:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  2b:	c9                   	leave  
-  2c:	c2 08 00             	ret    0x8
-  2f:	90                   	nop
-
-Disassembly of section .text$_ZN16FFTransformerVecIfEC1Eii:
-
-00000000 <__ZN16FFTransformerVecIfEC1Eii>:
-   0:	55                   	push   ebp
-   1:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
-   7:	c7 41 10 00 00 00 00 	mov    DWORD PTR [ecx+0x10],0x0
-   e:	89 e5                	mov    ebp,esp
-  10:	53                   	push   ebx
-  11:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-  14:	85 c0                	test   eax,eax
-  16:	7e 10                	jle    28 <__ZN16FFTransformerVecIfEC1Eii+0x28>
-  18:	8d 50 ff             	lea    edx,[eax-0x1]
-  1b:	85 c2                	test   edx,eax
-  1d:	75 09                	jne    28 <__ZN16FFTransformerVecIfEC1Eii+0x28>
-  1f:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  22:	c9                   	leave  
-  23:	e9 00 00 00 00       	jmp    28 <__ZN16FFTransformerVecIfEC1Eii+0x28>
-  28:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  2b:	c9                   	leave  
-  2c:	c2 08 00             	ret    0x8
-  2f:	90                   	nop
-
-Disassembly of section .text$_ZN16FFTransformerVecIfED2Ev:
-
-00000000 <__ZN16FFTransformerVecIfED2Ev>:
+00000000 <__ZN22FFTransformerRecursiveIfED2Ev>:
    0:	53                   	push   ebx
-   1:	89 cb                	mov    ebx,ecx
-   3:	83 ec 18             	sub    esp,0x18
-   6:	8b 41 0c             	mov    eax,DWORD PTR [ecx+0xc]
-   9:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
+   1:	83 ec 18             	sub    esp,0x18
+   4:	89 cb                	mov    ebx,ecx
+   6:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
+   c:	8b 41 0c             	mov    eax,DWORD PTR [ecx+0xc]
    f:	85 c0                	test   eax,eax
-  11:	74 08                	je     1b <__ZN16FFTransformerVecIfED2Ev+0x1b>
+  11:	74 08                	je     1b <__ZN22FFTransformerRecursiveIfED2Ev+0x1b>
   13:	89 04 24             	mov    DWORD PTR [esp],eax
-  16:	e8 00 00 00 00       	call   1b <__ZN16FFTransformerVecIfED2Ev+0x1b>
+  16:	e8 00 00 00 00       	call   1b <__ZN22FFTransformerRecursiveIfED2Ev+0x1b>
   1b:	8b 43 14             	mov    eax,DWORD PTR [ebx+0x14]
   1e:	85 c0                	test   eax,eax
-  20:	74 08                	je     2a <__ZN16FFTransformerVecIfED2Ev+0x2a>
+  20:	74 08                	je     2a <__ZN22FFTransformerRecursiveIfED2Ev+0x2a>
   22:	89 04 24             	mov    DWORD PTR [esp],eax
-  25:	e8 00 00 00 00       	call   2a <__ZN16FFTransformerVecIfED2Ev+0x2a>
+  25:	e8 00 00 00 00       	call   2a <__ZN22FFTransformerRecursiveIfED2Ev+0x2a>
   2a:	83 c4 18             	add    esp,0x18
   2d:	5b                   	pop    ebx
   2e:	c3                   	ret    
   2f:	90                   	nop
 
-Disassembly of section .text$_ZN16FFTransformerVecIfE7FFTInitEii:
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE7FFTInitEii:
 
-00000000 <__ZN16FFTransformerVecIfE7FFTInitEii>:
+00000000 <__ZN22FFTransformerRecursiveIfE7FFTInitEii>:
    0:	55                   	push   ebp
    1:	89 e5                	mov    ebp,esp
-   3:	53                   	push   ebx
-   4:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
-   7:	85 c0                	test   eax,eax
-   9:	7e 15                	jle    20 <__ZN16FFTransformerVecIfE7FFTInitEii+0x20>
-   b:	8d 50 ff             	lea    edx,[eax-0x1]
-   e:	85 c2                	test   edx,eax
-  10:	75 0e                	jne    20 <__ZN16FFTransformerVecIfE7FFTInitEii+0x20>
-  12:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  15:	c9                   	leave  
-  16:	e9 00 00 00 00       	jmp    1b <__ZN16FFTransformerVecIfE7FFTInitEii+0x1b>
-  1b:	90                   	nop
-  1c:	8d 74 26 00          	lea    esi,[esi+eiz*1+0x0]
-  20:	31 c0                	xor    eax,eax
-  22:	8b 5d fc             	mov    ebx,DWORD PTR [ebp-0x4]
-  25:	c9                   	leave  
-  26:	c2 08 00             	ret    0x8
-  29:	90                   	nop
-  2a:	90                   	nop
-  2b:	90                   	nop
-  2c:	90                   	nop
-  2d:	90                   	nop
-  2e:	90                   	nop
-  2f:	90                   	nop
-
-Disassembly of section .text$_ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE:
-
-00000000 <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE>:
-   0:	55                   	push   ebp
-   1:	31 c0                	xor    eax,eax
    3:	57                   	push   edi
    4:	56                   	push   esi
    5:	53                   	push   ebx
-   6:	83 ec 20             	sub    esp,0x20
-   9:	8b 69 04             	mov    ebp,DWORD PTR [ecx+0x4]
-   c:	85 ed                	test   ebp,ebp
-   e:	0f 8e 5b 02 00 00    	jle    26f <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x26f>
-  14:	8d 55 ff             	lea    edx,[ebp-0x1]
-  17:	85 ea                	test   edx,ebp
-  19:	0f 85 50 02 00 00    	jne    26f <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x26f>
-  1f:	83 fd 01             	cmp    ebp,0x1
-  22:	0f 84 42 02 00 00    	je     26a <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x26a>
-  28:	8b 71 18             	mov    esi,DWORD PTR [ecx+0x18]
-  2b:	8b 54 24 34          	mov    edx,DWORD PTR [esp+0x34]
-  2f:	31 c0                	xor    eax,eax
-  31:	89 34 24             	mov    DWORD PTR [esp],esi
-  34:	8b 34 24             	mov    esi,DWORD PTR [esp]
-  37:	8b 1c 86             	mov    ebx,DWORD PTR [esi+eax*4]
-  3a:	39 c3                	cmp    ebx,eax
-  3c:	7e 1d                	jle    5b <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x5b>
-  3e:	8b 74 24 34          	mov    esi,DWORD PTR [esp+0x34]
-  42:	d9 02                	fld    DWORD PTR [edx]
-  44:	d9 42 04             	fld    DWORD PTR [edx+0x4]
-  47:	d9 c9                	fxch   st(1)
-  49:	8d 1c de             	lea    ebx,[esi+ebx*8]
-  4c:	8b 33                	mov    esi,DWORD PTR [ebx]
-  4e:	8b 7b 04             	mov    edi,DWORD PTR [ebx+0x4]
-  51:	89 32                	mov    DWORD PTR [edx],esi
-  53:	89 7a 04             	mov    DWORD PTR [edx+0x4],edi
-  56:	d9 1b                	fstp   DWORD PTR [ebx]
-  58:	d9 5b 04             	fstp   DWORD PTR [ebx+0x4]
-  5b:	40                   	inc    eax
-  5c:	83 c2 08             	add    edx,0x8
-  5f:	39 e8                	cmp    eax,ebp
-  61:	75 d1                	jne    34 <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x34>
-  63:	0f bd c5             	bsr    eax,ebp
-  66:	c7 44 24 0c 1f 00 00 	mov    DWORD PTR [esp+0xc],0x1f
-  6d:	00 
-  6e:	31 d2                	xor    edx,edx
-  70:	83 f0 1f             	xor    eax,0x1f
-  73:	29 44 24 0c          	sub    DWORD PTR [esp+0xc],eax
-  77:	8b 44 24 34          	mov    eax,DWORD PTR [esp+0x34]
-  7b:	0f 28 15 10 00 00 00 	movaps xmm2,XMMWORD PTR ds:0x10
-  82:	05 30 01 00 00       	add    eax,0x130
-  87:	0f 28 25 20 00 00 00 	movaps xmm4,XMMWORD PTR ds:0x20
-  8e:	0f 28 3d 30 00 00 00 	movaps xmm7,XMMWORD PTR ds:0x30
-  95:	0f 28 a8 d0 fe ff ff 	movaps xmm5,XMMWORD PTR [eax-0x130]
-  9c:	83 c2 08             	add    edx,0x8
-  9f:	0f 18 08             	prefetcht0 BYTE PTR [eax]
-  a2:	83 c0 40             	add    eax,0x40
-  a5:	0f 28 f5             	movaps xmm6,xmm5
-  a8:	0f 28 80 a0 fe ff ff 	movaps xmm0,XMMWORD PTR [eax-0x160]
-  af:	0f c6 f5 4e          	shufps xmm6,xmm5,0x4e
-  b3:	0f 57 ea             	xorps  xmm5,xmm2
-  b6:	0f 28 98 b0 fe ff ff 	movaps xmm3,XMMWORD PTR [eax-0x150]
-  bd:	0f 28 88 c0 fe ff ff 	movaps xmm1,XMMWORD PTR [eax-0x140]
-  c4:	0f 58 ee             	addps  xmm5,xmm6
-  c7:	0f 28 f0             	movaps xmm6,xmm0
-  ca:	0f c6 f0 4e          	shufps xmm6,xmm0,0x4e
-  ce:	0f 57 c2             	xorps  xmm0,xmm2
-  d1:	0f 58 c6             	addps  xmm0,xmm6
-  d4:	0f 28 f5             	movaps xmm6,xmm5
-  d7:	0f c6 c0 b4          	shufps xmm0,xmm0,0xb4
-  db:	0f 57 c4             	xorps  xmm0,xmm4
-  de:	0f 58 f0             	addps  xmm6,xmm0
-  e1:	0f 5c e8             	subps  xmm5,xmm0
-  e4:	0f 28 c3             	movaps xmm0,xmm3
-  e7:	0f c6 c3 4e          	shufps xmm0,xmm3,0x4e
-  eb:	0f 57 da             	xorps  xmm3,xmm2
-  ee:	0f 58 d8             	addps  xmm3,xmm0
-  f1:	0f 28 c1             	movaps xmm0,xmm1
-  f4:	0f c6 c1 4e          	shufps xmm0,xmm1,0x4e
-  f8:	0f 57 ca             	xorps  xmm1,xmm2
-  fb:	0f 58 c8             	addps  xmm1,xmm0
-  fe:	0f 28 c3             	movaps xmm0,xmm3
- 101:	0f c6 c9 b4          	shufps xmm1,xmm1,0xb4
- 105:	0f 57 cc             	xorps  xmm1,xmm4
- 108:	0f 58 c1             	addps  xmm0,xmm1
- 10b:	0f 5c d9             	subps  xmm3,xmm1
- 10e:	0f 28 c8             	movaps xmm1,xmm0
- 111:	0f c6 c8 b4          	shufps xmm1,xmm0,0xb4
- 115:	0f 57 cc             	xorps  xmm1,xmm4
- 118:	0f 58 c8             	addps  xmm1,xmm0
- 11b:	0f 28 c3             	movaps xmm0,xmm3
- 11e:	0f c6 c3 b4          	shufps xmm0,xmm3,0xb4
- 122:	0f 59 cf             	mulps  xmm1,xmm7
- 125:	0f 57 05 40 00 00 00 	xorps  xmm0,XMMWORD PTR ds:0x40
- 12c:	0f 58 c3             	addps  xmm0,xmm3
- 12f:	0f 28 de             	movaps xmm3,xmm6
- 132:	0f 5c d9             	subps  xmm3,xmm1
- 135:	0f 59 05 50 00 00 00 	mulps  xmm0,XMMWORD PTR ds:0x50
- 13c:	0f 58 ce             	addps  xmm1,xmm6
- 13f:	0f 28 f5             	movaps xmm6,xmm5
- 142:	0f 29 98 b0 fe ff ff 	movaps XMMWORD PTR [eax-0x150],xmm3
- 149:	0f 29 88 90 fe ff ff 	movaps XMMWORD PTR [eax-0x170],xmm1
- 150:	0f c6 c0 e1          	shufps xmm0,xmm0,0xe1
- 154:	0f 5c f0             	subps  xmm6,xmm0
- 157:	0f 58 c5             	addps  xmm0,xmm5
- 15a:	0f 29 b0 c0 fe ff ff 	movaps XMMWORD PTR [eax-0x140],xmm6
- 161:	0f 29 80 a0 fe ff ff 	movaps XMMWORD PTR [eax-0x160],xmm0
- 168:	39 d5                	cmp    ebp,edx
- 16a:	0f 8f 25 ff ff ff    	jg     95 <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x95>
- 170:	83 fd 02             	cmp    ebp,0x2
- 173:	0f 84 f1 00 00 00    	je     26a <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x26a>
- 179:	83 7c 24 0c 03       	cmp    DWORD PTR [esp+0xc],0x3
- 17e:	0f 8e e6 00 00 00    	jle    26a <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x26a>
- 184:	8b 41 10             	mov    eax,DWORD PTR [ecx+0x10]
- 187:	c7 44 24 08 03 00 00 	mov    DWORD PTR [esp+0x8],0x3
- 18e:	00 
- 18f:	bf 08 00 00 00       	mov    edi,0x8
- 194:	89 44 24 10          	mov    DWORD PTR [esp+0x10],eax
- 198:	8d 74 f8 60          	lea    esi,[eax+edi*8+0x60]
- 19c:	8b 44 24 34          	mov    eax,DWORD PTR [esp+0x34]
- 1a0:	89 fb                	mov    ebx,edi
- 1a2:	8d 0c 3f             	lea    ecx,[edi+edi*1]
- 1a5:	c1 e3 04             	shl    ebx,0x4
- 1a8:	c7 04 24 00 00 00 00 	mov    DWORD PTR [esp],0x0
- 1af:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
- 1b3:	8b 14 24             	mov    edx,DWORD PTR [esp]
- 1b6:	f3 0f 16 6e 80       	movshdup xmm5,XMMWORD PTR [esi-0x80]
- 1bb:	f3 0f 16 66 90       	movshdup xmm4,XMMWORD PTR [esi-0x70]
- 1c0:	0f 18 0e             	prefetcht0 BYTE PTR [esi]
- 1c3:	0f 57 2d 60 00 00 00 	xorps  xmm5,XMMWORD PTR ds:0x60
- 1ca:	f3 0f 12 7e 80       	movsldup xmm7,XMMWORD PTR [esi-0x80]
- 1cf:	0f 18 4e 10          	prefetcht0 BYTE PTR [esi+0x10]
- 1d3:	f3 0f 12 76 90       	movsldup xmm6,XMMWORD PTR [esi-0x70]
- 1d8:	8b 44 24 04          	mov    eax,DWORD PTR [esp+0x4]
- 1dc:	39 d5                	cmp    ebp,edx
- 1de:	0f 57 25 60 00 00 00 	xorps  xmm4,XMMWORD PTR ds:0x60
- 1e5:	7e 55                	jle    23c <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x23c>
- 1e7:	0f 28 1c f8          	movaps xmm3,XMMWORD PTR [eax+edi*8]
- 1eb:	01 ca                	add    edx,ecx
- 1ed:	0f 28 cb             	movaps xmm1,xmm3
- 1f0:	0f 28 44 f8 10       	movaps xmm0,XMMWORD PTR [eax+edi*8+0x10]
- 1f5:	0f c6 cb b1          	shufps xmm1,xmm3,0xb1
- 1f9:	0f 59 df             	mulps  xmm3,xmm7
- 1fc:	0f 28 10             	movaps xmm2,XMMWORD PTR [eax]
- 1ff:	0f 59 cd             	mulps  xmm1,xmm5
- 202:	0f 58 d9             	addps  xmm3,xmm1
- 205:	0f 28 c8             	movaps xmm1,xmm0
- 208:	0f c6 c8 b1          	shufps xmm1,xmm0,0xb1
- 20c:	0f 59 c6             	mulps  xmm0,xmm6
- 20f:	0f 5c d3             	subps  xmm2,xmm3
- 212:	0f 59 cc             	mulps  xmm1,xmm4
- 215:	0f 58 18             	addps  xmm3,XMMWORD PTR [eax]
- 218:	0f 58 c1             	addps  xmm0,xmm1
- 21b:	0f 28 48 10          	movaps xmm1,XMMWORD PTR [eax+0x10]
- 21f:	0f 29 18             	movaps XMMWORD PTR [eax],xmm3
- 222:	0f 5c c8             	subps  xmm1,xmm0
- 225:	0f 58 40 10          	addps  xmm0,XMMWORD PTR [eax+0x10]
- 229:	0f 29 14 f8          	movaps XMMWORD PTR [eax+edi*8],xmm2
- 22d:	0f 29 40 10          	movaps XMMWORD PTR [eax+0x10],xmm0
- 231:	0f 29 4c f8 10       	movaps XMMWORD PTR [eax+edi*8+0x10],xmm1
- 236:	01 d8                	add    eax,ebx
- 238:	39 d5                	cmp    ebp,edx
- 23a:	7f ab                	jg     1e7 <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x1e7>
- 23c:	83 04 24 04          	add    DWORD PTR [esp],0x4
- 240:	83 c6 20             	add    esi,0x20
- 243:	83 44 24 04 20       	add    DWORD PTR [esp+0x4],0x20
- 248:	39 3c 24             	cmp    DWORD PTR [esp],edi
- 24b:	0f 8c 62 ff ff ff    	jl     1b3 <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x1b3>
- 251:	ff 44 24 08          	inc    DWORD PTR [esp+0x8]
- 255:	8b 44 24 0c          	mov    eax,DWORD PTR [esp+0xc]
- 259:	39 44 24 08          	cmp    DWORD PTR [esp+0x8],eax
- 25d:	74 0b                	je     26a <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x26a>
- 25f:	89 cf                	mov    edi,ecx
- 261:	8b 44 24 10          	mov    eax,DWORD PTR [esp+0x10]
- 265:	e9 2e ff ff ff       	jmp    198 <__ZN16FFTransformerVecIfE11FFTransformEP7ComplexIfE+0x198>
- 26a:	b8 01 00 00 00       	mov    eax,0x1
- 26f:	83 c4 20             	add    esp,0x20
- 272:	5b                   	pop    ebx
- 273:	5e                   	pop    esi
- 274:	5f                   	pop    edi
- 275:	5d                   	pop    ebp
- 276:	c2 04 00             	ret    0x4
- 279:	90                   	nop
- 27a:	90                   	nop
- 27b:	90                   	nop
- 27c:	90                   	nop
- 27d:	90                   	nop
- 27e:	90                   	nop
- 27f:	90                   	nop
+   6:	83 ec 3c             	sub    esp,0x3c
+   9:	b8 00 00 00 00       	mov    eax,0x0
+   e:	83 7d 08 00          	cmp    DWORD PTR [ebp+0x8],0x0
+  12:	0f 8e 57 01 00 00    	jle    16f <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x16f>
+  18:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+  1b:	48                   	dec    eax
+  1c:	85 45 08             	test   DWORD PTR [ebp+0x8],eax
+  1f:	0f 84 cd 00 00 00    	je     f2 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0xf2>
+  25:	b8 00 00 00 00       	mov    eax,0x0
+  2a:	e9 40 01 00 00       	jmp    16f <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x16f>
+  2f:	c7 45 d8 04 00 00 00 	mov    DWORD PTR [ebp-0x28],0x4
+  36:	eb 49                	jmp    81 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x81>
+  38:	89 5d e0             	mov    DWORD PTR [ebp-0x20],ebx
+  3b:	db 45 e0             	fild   DWORD PTR [ebp-0x20]
+  3e:	dc 4d d0             	fmul   QWORD PTR [ebp-0x30]
+  41:	dc 75 c8             	fdiv   QWORD PTR [ebp-0x38]
+  44:	d9 5d e4             	fstp   DWORD PTR [ebp-0x1c]
+  47:	d9 45 e4             	fld    DWORD PTR [ebp-0x1c]
+  4a:	d9 55 dc             	fst    DWORD PTR [ebp-0x24]
+  4d:	dd 1c 24             	fstp   QWORD PTR [esp]
+  50:	e8 00 00 00 00       	call   55 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x55>
+  55:	8b 47 10             	mov    eax,DWORD PTR [edi+0x10]
+  58:	d9 1c 30             	fstp   DWORD PTR [eax+esi*1]
+  5b:	d9 45 dc             	fld    DWORD PTR [ebp-0x24]
+  5e:	dd 1c 24             	fstp   QWORD PTR [esp]
+  61:	e8 00 00 00 00       	call   66 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x66>
+  66:	8b 47 10             	mov    eax,DWORD PTR [edi+0x10]
+  69:	d9 5c 30 04          	fstp   DWORD PTR [eax+esi*1+0x4]
+  6d:	43                   	inc    ebx
+  6e:	83 c6 08             	add    esi,0x8
+  71:	3b 5d d8             	cmp    ebx,DWORD PTR [ebp-0x28]
+  74:	75 c2                	jne    38 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x38>
+  76:	d1 65 d8             	shl    DWORD PTR [ebp-0x28],1
+  79:	8b 45 d8             	mov    eax,DWORD PTR [ebp-0x28]
+  7c:	39 45 08             	cmp    DWORD PTR [ebp+0x8],eax
+  7f:	7e 27                	jle    a8 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0xa8>
+  81:	8b 45 d8             	mov    eax,DWORD PTR [ebp-0x28]
+  84:	85 c0                	test   eax,eax
+  86:	7e ee                	jle    76 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x76>
+  88:	db 45 0c             	fild   DWORD PTR [ebp+0xc]
+  8b:	dc 0d 00 00 00 00    	fmul   QWORD PTR ds:0x0
+  91:	dd 5d d0             	fstp   QWORD PTR [ebp-0x30]
+  94:	8d 34 c5 e0 ff ff ff 	lea    esi,[eax*8-0x20]
+  9b:	bb 00 00 00 00       	mov    ebx,0x0
+  a0:	db 45 d8             	fild   DWORD PTR [ebp-0x28]
+  a3:	dd 5d c8             	fstp   QWORD PTR [ebp-0x38]
+  a6:	eb 90                	jmp    38 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x38>
+  a8:	8b 57 04             	mov    edx,DWORD PTR [edi+0x4]
+  ab:	0f bd c2             	bsr    eax,edx
+  ae:	83 f0 1f             	xor    eax,0x1f
+  b1:	40                   	inc    eax
+  b2:	89 45 dc             	mov    DWORD PTR [ebp-0x24],eax
+  b5:	85 d2                	test   edx,edx
+  b7:	7e 28                	jle    e1 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0xe1>
+  b9:	bb 00 00 00 00       	mov    ebx,0x0
+  be:	8b 47 18             	mov    eax,DWORD PTR [edi+0x18]
+  c1:	8d 34 98             	lea    esi,[eax+ebx*4]
+  c4:	89 1c 24             	mov    DWORD PTR [esp],ebx
+  c7:	89 f9                	mov    ecx,edi
+  c9:	e8 00 00 00 00       	call   ce <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0xce>
+  ce:	83 ec 04             	sub    esp,0x4
+  d1:	0f b6 4d dc          	movzx  ecx,BYTE PTR [ebp-0x24]
+  d5:	d3 e8                	shr    eax,cl
+  d7:	89 06                	mov    DWORD PTR [esi],eax
+  d9:	43                   	inc    ebx
+  da:	39 5f 04             	cmp    DWORD PTR [edi+0x4],ebx
+  dd:	7f df                	jg     be <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0xbe>
+  df:	eb 0a                	jmp    eb <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0xeb>
+  e1:	b8 01 00 00 00       	mov    eax,0x1
+  e6:	e9 84 00 00 00       	jmp    16f <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x16f>
+  eb:	b8 01 00 00 00       	mov    eax,0x1
+  f0:	eb 7d                	jmp    16f <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x16f>
+  f2:	89 cf                	mov    edi,ecx
+  f4:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+  f7:	89 41 04             	mov    DWORD PTR [ecx+0x4],eax
+  fa:	83 7d 0c 00          	cmp    DWORD PTR [ebp+0xc],0x0
+  fe:	0f 9f c0             	setg   al
+ 101:	0f b6 c0             	movzx  eax,al
+ 104:	89 41 08             	mov    DWORD PTR [ecx+0x8],eax
+ 107:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 10a:	83 c0 02             	add    eax,0x2
+ 10d:	8d 14 c5 00 00 00 00 	lea    edx,[eax*8+0x0]
+ 114:	3d 01 00 e0 0f       	cmp    eax,0xfe00001
+ 119:	b8 ff ff ff ff       	mov    eax,0xffffffff
+ 11e:	0f 42 c2             	cmovb  eax,edx
+ 121:	89 04 24             	mov    DWORD PTR [esp],eax
+ 124:	e8 00 00 00 00       	call   129 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x129>
+ 129:	89 47 0c             	mov    DWORD PTR [edi+0xc],eax
+ 12c:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+ 12f:	83 c0 04             	add    eax,0x4
+ 132:	8d 14 85 00 00 00 00 	lea    edx,[eax*4+0x0]
+ 139:	3d 00 00 c0 1f       	cmp    eax,0x1fc00000
+ 13e:	b8 ff ff ff ff       	mov    eax,0xffffffff
+ 143:	0f 46 c2             	cmovbe eax,edx
+ 146:	89 04 24             	mov    DWORD PTR [esp],eax
+ 149:	e8 00 00 00 00       	call   14e <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x14e>
+ 14e:	89 47 14             	mov    DWORD PTR [edi+0x14],eax
+ 151:	8b 57 0c             	mov    edx,DWORD PTR [edi+0xc]
+ 154:	83 e2 f0             	and    edx,0xfffffff0
+ 157:	89 57 10             	mov    DWORD PTR [edi+0x10],edx
+ 15a:	83 e0 f0             	and    eax,0xfffffff0
+ 15d:	89 47 18             	mov    DWORD PTR [edi+0x18],eax
+ 160:	83 7d 08 04          	cmp    DWORD PTR [ebp+0x8],0x4
+ 164:	0f 8f c5 fe ff ff    	jg     2f <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0x2f>
+ 16a:	e9 39 ff ff ff       	jmp    a8 <__ZN22FFTransformerRecursiveIfE7FFTInitEii+0xa8>
+ 16f:	8d 65 f4             	lea    esp,[ebp-0xc]
+ 172:	5b                   	pop    ebx
+ 173:	5e                   	pop    esi
+ 174:	5f                   	pop    edi
+ 175:	5d                   	pop    ebp
+ 176:	c2 08 00             	ret    0x8
+ 179:	90                   	nop
+ 17a:	90                   	nop
+ 17b:	90                   	nop
+
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfEC2Eii:
+
+00000000 <__ZN22FFTransformerRecursiveIfEC2Eii>:
+   0:	55                   	push   ebp
+   1:	89 e5                	mov    ebp,esp
+   3:	83 ec 18             	sub    esp,0x18
+   6:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
+   c:	c7 41 10 00 00 00 00 	mov    DWORD PTR [ecx+0x10],0x0
+  13:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+  16:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  1a:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+  1d:	89 04 24             	mov    DWORD PTR [esp],eax
+  20:	e8 00 00 00 00       	call   25 <__ZN22FFTransformerRecursiveIfEC2Eii+0x25>
+  25:	83 ec 08             	sub    esp,0x8
+  28:	c9                   	leave  
+  29:	c2 08 00             	ret    0x8
+
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfEC1Eii:
+
+00000000 <__ZN22FFTransformerRecursiveIfEC1Eii>:
+   0:	55                   	push   ebp
+   1:	89 e5                	mov    ebp,esp
+   3:	83 ec 18             	sub    esp,0x18
+   6:	c7 01 08 00 00 00    	mov    DWORD PTR [ecx],0x8
+   c:	c7 41 10 00 00 00 00 	mov    DWORD PTR [ecx+0x10],0x0
+  13:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+  16:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  1a:	8b 45 08             	mov    eax,DWORD PTR [ebp+0x8]
+  1d:	89 04 24             	mov    DWORD PTR [esp],eax
+  20:	e8 00 00 00 00       	call   25 <__ZN22FFTransformerRecursiveIfEC1Eii+0x25>
+  25:	83 ec 08             	sub    esp,0x8
+  28:	c9                   	leave  
+  29:	c2 08 00             	ret    0x8
+
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi:
+
+00000000 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi>:
+   0:	55                   	push   ebp
+   1:	57                   	push   edi
+   2:	56                   	push   esi
+   3:	53                   	push   ebx
+   4:	83 ec 24             	sub    esp,0x24
+   7:	89 4c 24 0c          	mov    DWORD PTR [esp+0xc],ecx
+   b:	8b 6c 24 3c          	mov    ebp,DWORD PTR [esp+0x3c]
+   f:	b8 00 00 00 00       	mov    eax,0x0
+  14:	85 ed                	test   ebp,ebp
+  16:	0f 8e 30 02 00 00    	jle    24c <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x24c>
+  1c:	8d 45 ff             	lea    eax,[ebp-0x1]
+  1f:	85 e8                	test   eax,ebp
+  21:	0f 85 04 02 00 00    	jne    22b <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x22b>
+  27:	83 fd 01             	cmp    ebp,0x1
+  2a:	0f 84 02 02 00 00    	je     232 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x232>
+  30:	0f bd c5             	bsr    eax,ebp
+  33:	83 f0 1f             	xor    eax,0x1f
+  36:	ba 1f 00 00 00       	mov    edx,0x1f
+  3b:	29 c2                	sub    edx,eax
+  3d:	89 54 24 14          	mov    DWORD PTR [esp+0x14],edx
+  41:	8b 44 24 38          	mov    eax,DWORD PTR [esp+0x38]
+  45:	ba 00 00 00 00       	mov    edx,0x0
+  4a:	0f 28 05 10 00 00 00 	movaps xmm0,XMMWORD PTR ds:0x10
+  51:	0f 28 1d 20 00 00 00 	movaps xmm3,XMMWORD PTR ds:0x20
+  58:	0f 28 35 30 00 00 00 	movaps xmm6,XMMWORD PTR ds:0x30
+  5f:	0f 28 28             	movaps xmm5,XMMWORD PTR [eax]
+  62:	0f 28 48 10          	movaps xmm1,XMMWORD PTR [eax+0x10]
+  66:	0f 28 78 20          	movaps xmm7,XMMWORD PTR [eax+0x20]
+  6a:	0f 28 50 30          	movaps xmm2,XMMWORD PTR [eax+0x30]
+  6e:	0f 28 e5             	movaps xmm4,xmm5
+  71:	0f c6 e5 4e          	shufps xmm4,xmm5,0x4e
+  75:	0f 57 e8             	xorps  xmm5,xmm0
+  78:	0f 58 e5             	addps  xmm4,xmm5
+  7b:	0f 28 e9             	movaps xmm5,xmm1
+  7e:	0f c6 e9 4e          	shufps xmm5,xmm1,0x4e
+  82:	0f 57 c8             	xorps  xmm1,xmm0
+  85:	0f 58 cd             	addps  xmm1,xmm5
+  88:	0f c6 c9 b4          	shufps xmm1,xmm1,0xb4
+  8c:	0f 57 cb             	xorps  xmm1,xmm3
+  8f:	0f 28 ec             	movaps xmm5,xmm4
+  92:	0f 58 e9             	addps  xmm5,xmm1
+  95:	0f 5c e1             	subps  xmm4,xmm1
+  98:	0f 28 cf             	movaps xmm1,xmm7
+  9b:	0f c6 cf 4e          	shufps xmm1,xmm7,0x4e
+  9f:	0f 57 f8             	xorps  xmm7,xmm0
+  a2:	0f 58 cf             	addps  xmm1,xmm7
+  a5:	0f 28 fa             	movaps xmm7,xmm2
+  a8:	0f c6 fa 4e          	shufps xmm7,xmm2,0x4e
+  ac:	0f 57 d0             	xorps  xmm2,xmm0
+  af:	0f 58 d7             	addps  xmm2,xmm7
+  b2:	0f c6 d2 b4          	shufps xmm2,xmm2,0xb4
+  b6:	0f 57 d3             	xorps  xmm2,xmm3
+  b9:	0f 28 fa             	movaps xmm7,xmm2
+  bc:	0f 28 d1             	movaps xmm2,xmm1
+  bf:	0f 58 d7             	addps  xmm2,xmm7
+  c2:	0f 5c cf             	subps  xmm1,xmm7
+  c5:	0f 28 fa             	movaps xmm7,xmm2
+  c8:	0f c6 fa b4          	shufps xmm7,xmm2,0xb4
+  cc:	0f 57 fb             	xorps  xmm7,xmm3
+  cf:	0f 58 d7             	addps  xmm2,xmm7
+  d2:	0f 59 d6             	mulps  xmm2,xmm6
+  d5:	0f 28 f9             	movaps xmm7,xmm1
+  d8:	0f c6 f9 b4          	shufps xmm7,xmm1,0xb4
+  dc:	0f 57 3d 40 00 00 00 	xorps  xmm7,XMMWORD PTR ds:0x40
+  e3:	0f 58 cf             	addps  xmm1,xmm7
+  e6:	0f 59 0d 50 00 00 00 	mulps  xmm1,XMMWORD PTR ds:0x50
+  ed:	0f c6 c9 e1          	shufps xmm1,xmm1,0xe1
+  f1:	0f 28 fd             	movaps xmm7,xmm5
+  f4:	0f 5c fa             	subps  xmm7,xmm2
+  f7:	0f 58 ea             	addps  xmm5,xmm2
+  fa:	0f 28 d4             	movaps xmm2,xmm4
+  fd:	0f 5c d1             	subps  xmm2,xmm1
+ 100:	0f 58 e1             	addps  xmm4,xmm1
+ 103:	0f 29 28             	movaps XMMWORD PTR [eax],xmm5
+ 106:	0f 29 60 10          	movaps XMMWORD PTR [eax+0x10],xmm4
+ 10a:	0f 29 78 20          	movaps XMMWORD PTR [eax+0x20],xmm7
+ 10e:	0f 29 50 30          	movaps XMMWORD PTR [eax+0x30],xmm2
+ 112:	83 c2 08             	add    edx,0x8
+ 115:	83 c0 40             	add    eax,0x40
+ 118:	39 d5                	cmp    ebp,edx
+ 11a:	0f 8f 3f ff ff ff    	jg     5f <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x5f>
+ 120:	83 fd 02             	cmp    ebp,0x2
+ 123:	0f 84 10 01 00 00    	je     239 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x239>
+ 129:	83 7c 24 14 03       	cmp    DWORD PTR [esp+0x14],0x3
+ 12e:	0f 8e 0c 01 00 00    	jle    240 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x240>
+ 134:	c7 44 24 10 03 00 00 	mov    DWORD PTR [esp+0x10],0x3
+ 13b:	00 
+ 13c:	c7 44 24 08 08 00 00 	mov    DWORD PTR [esp+0x8],0x8
+ 143:	00 
+ 144:	8b 44 24 08          	mov    eax,DWORD PTR [esp+0x8]
+ 148:	8d 1c 00             	lea    ebx,[eax+eax*1]
+ 14b:	85 c0                	test   eax,eax
+ 14d:	0f 8e c1 00 00 00    	jle    214 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x214>
+ 153:	89 c2                	mov    edx,eax
+ 155:	8d 04 c5 e0 ff ff ff 	lea    eax,[eax*8-0x20]
+ 15c:	89 04 24             	mov    DWORD PTR [esp],eax
+ 15f:	8b 44 24 38          	mov    eax,DWORD PTR [esp+0x38]
+ 163:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+ 167:	8d 34 dd 00 00 00 00 	lea    esi,[ebx*8+0x0]
+ 16e:	bf 00 00 00 00       	mov    edi,0x0
+ 173:	8b 4c 24 0c          	mov    ecx,DWORD PTR [esp+0xc]
+ 177:	8b 04 24             	mov    eax,DWORD PTR [esp]
+ 17a:	03 41 10             	add    eax,DWORD PTR [ecx+0x10]
+ 17d:	f3 0f 16 10          	movshdup xmm2,XMMWORD PTR [eax]
+ 181:	0f 57 15 60 00 00 00 	xorps  xmm2,XMMWORD PTR ds:0x60
+ 188:	f3 0f 12 18          	movsldup xmm3,XMMWORD PTR [eax]
+ 18c:	0f 28 68 10          	movaps xmm5,XMMWORD PTR [eax+0x10]
+ 190:	f3 0f 16 e5          	movshdup xmm4,xmm5
+ 194:	0f 57 25 60 00 00 00 	xorps  xmm4,XMMWORD PTR ds:0x60
+ 19b:	f3 0f 12 ed          	movsldup xmm5,xmm5
+ 19f:	39 fd                	cmp    ebp,edi
+ 1a1:	7e 5b                	jle    1fe <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x1fe>
+ 1a3:	8b 44 24 04          	mov    eax,DWORD PTR [esp+0x4]
+ 1a7:	89 f9                	mov    ecx,edi
+ 1a9:	0f 28 0c d0          	movaps xmm1,XMMWORD PTR [eax+edx*8]
+ 1ad:	0f 28 44 d0 10       	movaps xmm0,XMMWORD PTR [eax+edx*8+0x10]
+ 1b2:	0f 28 f1             	movaps xmm6,xmm1
+ 1b5:	0f c6 f1 b1          	shufps xmm6,xmm1,0xb1
+ 1b9:	0f 59 f2             	mulps  xmm6,xmm2
+ 1bc:	0f 59 cb             	mulps  xmm1,xmm3
+ 1bf:	0f 58 ce             	addps  xmm1,xmm6
+ 1c2:	0f 28 30             	movaps xmm6,XMMWORD PTR [eax]
+ 1c5:	0f 5c f1             	subps  xmm6,xmm1
+ 1c8:	0f 58 08             	addps  xmm1,XMMWORD PTR [eax]
+ 1cb:	0f 28 f8             	movaps xmm7,xmm0
+ 1ce:	0f c6 f8 b1          	shufps xmm7,xmm0,0xb1
+ 1d2:	0f 59 fc             	mulps  xmm7,xmm4
+ 1d5:	0f 59 c5             	mulps  xmm0,xmm5
+ 1d8:	0f 58 c7             	addps  xmm0,xmm7
+ 1db:	0f 28 78 10          	movaps xmm7,XMMWORD PTR [eax+0x10]
+ 1df:	0f 5c f8             	subps  xmm7,xmm0
+ 1e2:	0f 58 40 10          	addps  xmm0,XMMWORD PTR [eax+0x10]
+ 1e6:	0f 29 08             	movaps XMMWORD PTR [eax],xmm1
+ 1e9:	0f 29 34 d0          	movaps XMMWORD PTR [eax+edx*8],xmm6
+ 1ed:	0f 29 40 10          	movaps XMMWORD PTR [eax+0x10],xmm0
+ 1f1:	0f 29 7c d0 10       	movaps XMMWORD PTR [eax+edx*8+0x10],xmm7
+ 1f6:	01 d9                	add    ecx,ebx
+ 1f8:	01 f0                	add    eax,esi
+ 1fa:	39 cd                	cmp    ebp,ecx
+ 1fc:	7f ab                	jg     1a9 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x1a9>
+ 1fe:	83 c7 04             	add    edi,0x4
+ 201:	83 04 24 20          	add    DWORD PTR [esp],0x20
+ 205:	83 44 24 04 20       	add    DWORD PTR [esp+0x4],0x20
+ 20a:	3b 7c 24 08          	cmp    edi,DWORD PTR [esp+0x8]
+ 20e:	0f 8c 5f ff ff ff    	jl     173 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x173>
+ 214:	ff 44 24 10          	inc    DWORD PTR [esp+0x10]
+ 218:	8b 44 24 14          	mov    eax,DWORD PTR [esp+0x14]
+ 21c:	39 44 24 10          	cmp    DWORD PTR [esp+0x10],eax
+ 220:	74 25                	je     247 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x247>
+ 222:	89 5c 24 08          	mov    DWORD PTR [esp+0x8],ebx
+ 226:	e9 19 ff ff ff       	jmp    144 <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x144>
+ 22b:	b8 00 00 00 00       	mov    eax,0x0
+ 230:	eb 1a                	jmp    24c <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x24c>
+ 232:	b8 01 00 00 00       	mov    eax,0x1
+ 237:	eb 13                	jmp    24c <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x24c>
+ 239:	b8 01 00 00 00       	mov    eax,0x1
+ 23e:	eb 0c                	jmp    24c <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x24c>
+ 240:	b8 01 00 00 00       	mov    eax,0x1
+ 245:	eb 05                	jmp    24c <__ZN22FFTransformerRecursiveIfE17FFTransformNormalEP7ComplexIfEi+0x24c>
+ 247:	b8 01 00 00 00       	mov    eax,0x1
+ 24c:	83 c4 24             	add    esp,0x24
+ 24f:	5b                   	pop    ebx
+ 250:	5e                   	pop    esi
+ 251:	5f                   	pop    edi
+ 252:	5d                   	pop    ebp
+ 253:	c2 08 00             	ret    0x8
+ 256:	90                   	nop
+ 257:	90                   	nop
+
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi:
+
+00000000 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi>:
+   0:	55                   	push   ebp
+   1:	89 e5                	mov    ebp,esp
+   3:	57                   	push   edi
+   4:	56                   	push   esi
+   5:	53                   	push   ebx
+   6:	83 ec 3c             	sub    esp,0x3c
+   9:	89 cb                	mov    ebx,ecx
+   b:	8b 7d 08             	mov    edi,DWORD PTR [ebp+0x8]
+   e:	8b 45 0c             	mov    eax,DWORD PTR [ebp+0xc]
+  11:	3d 00 10 00 00       	cmp    eax,0x1000
+  16:	7f 14                	jg     2c <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x2c>
+  18:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  1c:	89 3c 24             	mov    DWORD PTR [esp],edi
+  1f:	e8 00 00 00 00       	call   24 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x24>
+  24:	83 ec 08             	sub    esp,0x8
+  27:	e9 24 01 00 00       	jmp    150 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x150>
+  2c:	89 c6                	mov    esi,eax
+  2e:	c1 ee 1f             	shr    esi,0x1f
+  31:	01 c6                	add    esi,eax
+  33:	d1 fe                	sar    esi,1
+  35:	89 75 d4             	mov    DWORD PTR [ebp-0x2c],esi
+  38:	3d ff ff 00 00       	cmp    eax,0xffff
+  3d:	7e 44                	jle    83 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x83>
+  3f:	89 4d dc             	mov    DWORD PTR [ebp-0x24],ecx
+  42:	89 7d e0             	mov    DWORD PTR [ebp-0x20],edi
+  45:	89 75 e4             	mov    DWORD PTR [ebp-0x1c],esi
+  48:	c7 44 24 0c 02 00 00 	mov    DWORD PTR [esp+0xc],0x2
+  4f:	00 
+  50:	c7 44 24 08 00 00 00 	mov    DWORD PTR [esp+0x8],0x0
+  57:	00 
+  58:	8d 75 dc             	lea    esi,[ebp-0x24]
+  5b:	89 74 24 04          	mov    DWORD PTR [esp+0x4],esi
+  5f:	c7 04 24 00 00 00 00 	mov    DWORD PTR [esp],0x0
+  66:	e8 00 00 00 00       	call   6b <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x6b>
+  6b:	89 34 24             	mov    DWORD PTR [esp],esi
+  6e:	e8 00 00 00 00       	call   73 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x73>
+  73:	e8 00 00 00 00       	call   78 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x78>
+  78:	8b 7d e0             	mov    edi,DWORD PTR [ebp-0x20]
+  7b:	8b 45 e4             	mov    eax,DWORD PTR [ebp-0x1c]
+  7e:	89 45 d4             	mov    DWORD PTR [ebp-0x2c],eax
+  81:	eb 23                	jmp    a6 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0xa6>
+  83:	89 74 24 04          	mov    DWORD PTR [esp+0x4],esi
+  87:	89 3c 24             	mov    DWORD PTR [esp],edi
+  8a:	e8 71 ff ff ff       	call   0 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi>
+  8f:	83 ec 08             	sub    esp,0x8
+  92:	89 74 24 04          	mov    DWORD PTR [esp+0x4],esi
+  96:	8d 04 f7             	lea    eax,[edi+esi*8]
+  99:	89 04 24             	mov    DWORD PTR [esp],eax
+  9c:	89 d9                	mov    ecx,ebx
+  9e:	e8 5d ff ff ff       	call   0 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi>
+  a3:	83 ec 08             	sub    esp,0x8
+  a6:	8b 45 d4             	mov    eax,DWORD PTR [ebp-0x2c]
+  a9:	85 c0                	test   eax,eax
+  ab:	0f 8e 93 00 00 00    	jle    144 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x144>
+  b1:	8d 04 c7             	lea    eax,[edi+eax*8]
+  b4:	89 fa                	mov    edx,edi
+  b6:	b9 00 00 00 00       	mov    ecx,0x0
+  bb:	be e0 ff ff ff       	mov    esi,0xffffffe0
+  c0:	29 fe                	sub    esi,edi
+  c2:	89 f7                	mov    edi,esi
+  c4:	0f 28 1d 60 00 00 00 	movaps xmm3,XMMWORD PTR ds:0x60
+  cb:	8d 34 07             	lea    esi,[edi+eax*1]
+  ce:	03 73 10             	add    esi,DWORD PTR [ebx+0x10]
+  d1:	f3 0f 16 2e          	movshdup xmm5,XMMWORD PTR [esi]
+  d5:	0f 57 eb             	xorps  xmm5,xmm3
+  d8:	f3 0f 12 36          	movsldup xmm6,XMMWORD PTR [esi]
+  dc:	0f 28 46 10          	movaps xmm0,XMMWORD PTR [esi+0x10]
+  e0:	f3 0f 16 e0          	movshdup xmm4,xmm0
+  e4:	0f 57 e3             	xorps  xmm4,xmm3
+  e7:	f3 0f 12 c0          	movsldup xmm0,xmm0
+  eb:	0f 28 10             	movaps xmm2,XMMWORD PTR [eax]
+  ee:	0f 28 48 10          	movaps xmm1,XMMWORD PTR [eax+0x10]
+  f2:	0f 28 fa             	movaps xmm7,xmm2
+  f5:	0f c6 fa b1          	shufps xmm7,xmm2,0xb1
+  f9:	0f 59 ef             	mulps  xmm5,xmm7
+  fc:	0f 59 d6             	mulps  xmm2,xmm6
+  ff:	0f 58 d5             	addps  xmm2,xmm5
+ 102:	0f 28 2a             	movaps xmm5,XMMWORD PTR [edx]
+ 105:	0f 5c ea             	subps  xmm5,xmm2
+ 108:	0f 58 12             	addps  xmm2,XMMWORD PTR [edx]
+ 10b:	0f 28 f1             	movaps xmm6,xmm1
+ 10e:	0f c6 f1 b1          	shufps xmm6,xmm1,0xb1
+ 112:	0f 59 e6             	mulps  xmm4,xmm6
+ 115:	0f 59 c8             	mulps  xmm1,xmm0
+ 118:	0f 58 cc             	addps  xmm1,xmm4
+ 11b:	0f 28 62 10          	movaps xmm4,XMMWORD PTR [edx+0x10]
+ 11f:	0f 5c e1             	subps  xmm4,xmm1
+ 122:	0f 58 4a 10          	addps  xmm1,XMMWORD PTR [edx+0x10]
+ 126:	0f 29 12             	movaps XMMWORD PTR [edx],xmm2
+ 129:	0f 29 28             	movaps XMMWORD PTR [eax],xmm5
+ 12c:	0f 29 4a 10          	movaps XMMWORD PTR [edx+0x10],xmm1
+ 130:	0f 29 60 10          	movaps XMMWORD PTR [eax+0x10],xmm4
+ 134:	83 c1 04             	add    ecx,0x4
+ 137:	83 c2 20             	add    edx,0x20
+ 13a:	83 c0 20             	add    eax,0x20
+ 13d:	39 4d d4             	cmp    DWORD PTR [ebp-0x2c],ecx
+ 140:	7f 89                	jg     cb <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0xcb>
+ 142:	eb 07                	jmp    14b <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x14b>
+ 144:	b8 01 00 00 00       	mov    eax,0x1
+ 149:	eb 05                	jmp    150 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfEi+0x150>
+ 14b:	b8 01 00 00 00       	mov    eax,0x1
+ 150:	8d 65 f4             	lea    esp,[ebp-0xc]
+ 153:	5b                   	pop    ebx
+ 154:	5e                   	pop    esi
+ 155:	5f                   	pop    edi
+ 156:	5d                   	pop    ebp
+ 157:	c2 08 00             	ret    0x8
+ 15a:	90                   	nop
+ 15b:	90                   	nop
+
+Disassembly of section .text$_ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfE:
+
+00000000 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfE>:
+   0:	55                   	push   ebp
+   1:	89 e5                	mov    ebp,esp
+   3:	83 ec 18             	sub    esp,0x18
+   6:	89 5d f8             	mov    DWORD PTR [ebp-0x8],ebx
+   9:	89 75 fc             	mov    DWORD PTR [ebp-0x4],esi
+   c:	89 cb                	mov    ebx,ecx
+   e:	8b 75 08             	mov    esi,DWORD PTR [ebp+0x8]
+  11:	8b 41 04             	mov    eax,DWORD PTR [ecx+0x4]
+  14:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  18:	89 34 24             	mov    DWORD PTR [esp],esi
+  1b:	e8 00 00 00 00       	call   20 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfE+0x20>
+  20:	83 ec 08             	sub    esp,0x8
+  23:	8b 43 04             	mov    eax,DWORD PTR [ebx+0x4]
+  26:	89 44 24 04          	mov    DWORD PTR [esp+0x4],eax
+  2a:	89 34 24             	mov    DWORD PTR [esp],esi
+  2d:	89 d9                	mov    ecx,ebx
+  2f:	e8 00 00 00 00       	call   34 <__ZN22FFTransformerRecursiveIfE11FFTransformEP7ComplexIfE+0x34>
+  34:	83 ec 08             	sub    esp,0x8
+  37:	8b 5d f8             	mov    ebx,DWORD PTR [ebp-0x8]
+  3a:	8b 75 fc             	mov    esi,DWORD PTR [ebp-0x4]
+  3d:	c9                   	leave  
+  3e:	c2 04 00             	ret    0x4
+  41:	90                   	nop
+  42:	90                   	nop
+  43:	90                   	nop

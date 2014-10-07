@@ -19,7 +19,7 @@ class FFTransformerRecursive
         uint *shuffle_ind_unalign;
         uint *shuffle_ind;
 
-        static const int MIN_FFT_BRANCH = 4096;
+        static const int MIN_FFT_BRANCH = 4096 * 1;
 
         bool isPowerOfTwo(uint n);
         int getPowerOfTwo(uint n);

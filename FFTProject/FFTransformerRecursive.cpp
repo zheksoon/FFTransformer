@@ -112,13 +112,25 @@ bool FFTransformerRecursive<FLOAT>::FFTransform(Complex<FLOAT>* data, int length
         return FFTransformNormal(data, length);
     }
     int steep = length / 2;
-    #pragma omp parallel sections
+    if (length >= 65536)
     {
-        #pragma omp section
+        #pragma omp parallel sections
+        {
+             #pragma omp section
+            {
+                FFTransform(data, steep);
+            }
+            #pragma omp section
+            {
+                FFTransform(data + steep, steep);
+            }
+        }
+    }
+    else
+    {
         {
             FFTransform(data, steep);
         }
-        #pragma omp section
         {
             FFTransform(data + steep, steep);
         }
@@ -194,7 +206,7 @@ bool FFTransformerRecursive<FLOAT>::FFTransformNormal(Complex<FLOAT>* data, int 
         Vec4f sign_3 = reinterpret_f(Vec4i(0, 0, 1<<31, 0));
         Vec4f sqrt2_4f_1(0.5,  0.5,  SQRT2_2,  SQRT2_2);
         Vec4f sqrt2_4f_2(-0.5, 0.5, -SQRT2_2, -SQRT2_2);
-        Vec4f sqrt2_4f(SQRT2_2,-SQRT2_2,SQRT2_2,-SQRT2_2);
+        //Vec4f sqrt2_4f(SQRT2_2,-SQRT2_2,SQRT2_2,-SQRT2_2);
 
         Vec4f ab_shuf = permute4f<2,3,0,1>(ab);
         ab = (ab ^ sign_1) + ab_shuf;
